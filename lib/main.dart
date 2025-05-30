@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
         canvasColor: secondaryColor,
       ),
 
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
 
       home: MainScreen(),
     );

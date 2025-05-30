@@ -23,9 +23,25 @@ I want you to complete and optimize the existing Flutter project with the follow
 
 notes:
 [
-    depinging on language make the app display the data in that language.
-    the currency is Saudi Arabia currency , not doller.
-    and make sure that we add everything we need to finish the project.  
+Implement language-based localization so the app automatically displays all data in the selected language.
+
+Use Saudi Riyal (SAR) as the default currency throughout the app instead of US Dollars.
+
+Review the entire project scope to ensure all necessary features and details are included and completed.
+
+Fix the theme mode switching issue:
+
+When changing the theme from the main settings, ensure all UI colors update consistently across all screens and components.
+
+Text colors should switch appropriately (no more white text on light backgrounds).
+
+The sidebar background should adapt to the theme, with correct shadows and styling applied.
+
+Elements such as the Orders table container and other page components must reflect the selected theme accurately
+(no lingering dark colors in light mode or vice versa).
+
+Add functionality so that when an order item is tapped or clicked, an enhanced detailed view of that order is displayed, 
+showing all relevant order information in a user-friendly layout.
 ]
 
  [

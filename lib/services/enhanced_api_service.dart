@@ -249,4 +249,10 @@ class EnhancedApiService {
       throw Exception('Upload error: $e');
     }
   }
+
+  static getSystemMonitorData(String s) {}
+
+  static clearSystemCache({required bool all}) {}
+
+  static toggleMaintenanceMode() {}
 }

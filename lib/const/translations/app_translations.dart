@@ -6,7 +6,6 @@ class AppTranslations extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en': {
-          // Navigation
           'dashboard': 'Dashboard',
           'admin_users': 'Admin Users',
           'customers': 'Customers',
@@ -21,8 +20,6 @@ class AppTranslations extends Translations {
           'change_theme': 'Change Theme',
           'change_language': 'Change Language',
           'logout': 'Logout',
-
-          // Dashboard
           'welcome_admin': 'Welcome to Admin Panel',
           'total_users': 'Total Users',
           'total_orders': 'Total Orders',
@@ -36,8 +33,6 @@ class AppTranslations extends Translations {
           'statistics': 'Statistics',
           'manage_all_orders': 'Manage all orders in your system',
           'all_orders': 'All Orders',
-
-          // Common
           'search': 'Search',
           'add_new': 'Add New',
           'edit': 'Edit',
@@ -58,8 +53,6 @@ class AppTranslations extends Translations {
           'view_details': 'View Details',
           'retry': 'Retry',
           'copied_to_clipboard': 'Copied to clipboard',
-
-          // User Management
           'user_name': 'User Name',
           'customer_name': 'Customer Name',
           'phone_number': 'Phone Number',
@@ -71,16 +64,12 @@ class AppTranslations extends Translations {
           'pending': 'Pending',
           'approve': 'Approve',
           'reject': 'Reject',
-
-          // Services
           'service_name': 'Service Name',
           'service_image': 'Service Image',
           'price': 'Price',
           'add_service': 'Add Service',
           'edit_service': 'Edit Service',
           'delete_service': 'Delete Service',
-
-          // Orders
           'order_number': 'Order Number',
           'order_details': 'Order Details',
           'order_information': 'Order Information',
@@ -117,14 +106,10 @@ class AppTranslations extends Translations {
           'print_order': 'Print Order',
           'export_pdf': 'Export PDF',
           'edit_status': 'Edit Status',
-
-          // Order Types
           'home_service': 'Home Service',
           'workshop_service': 'Workshop Service',
           'emergency_service': 'Emergency Service',
           'unknown': 'Unknown',
-
-          // Payments
           'payment_date': 'Payment Date',
           'amount': 'Amount',
           'cash': 'Cash',
@@ -133,8 +118,6 @@ class AppTranslations extends Translations {
           'paid': 'Paid',
           'failed': 'Failed',
           'refunded': 'Refunded',
-
-          // Vehicles
           'license_plate': 'License Plate',
           'vehicle_make': 'Vehicle Make',
           'vehicle_model': 'Vehicle Model',
@@ -142,8 +125,6 @@ class AppTranslations extends Translations {
           'vehicle_id': 'Vehicle ID',
           'no_vehicle_assigned': 'No vehicle assigned',
           'vehicle_details_loading': 'Loading vehicle details...',
-
-          // Notifications
           'notification_sent': 'Notification sent successfully',
           'user_updated': 'User updated successfully',
           'service_added': 'Service added successfully',
@@ -151,31 +132,23 @@ class AppTranslations extends Translations {
           'payment_processed': 'Payment processed successfully',
           'mark_all_read': 'Mark All Read',
           'send_notification': 'Send Notification',
-
-          // Validation
           'field_required': 'This field is required',
           'invalid_email': 'Invalid email address',
           'invalid_phone': 'Invalid phone number',
           'min_length': 'Minimum length is @count characters',
           'max_length': 'Maximum length is @count characters',
-
-          // Time/Date
           'years_ago': 'years ago',
           'months_ago': 'months ago',
           'days_ago': 'days ago',
           'hours_ago': 'hours ago',
           'minutes_ago': 'minutes ago',
           'just_now': 'just now',
-
-          // Actions
           'download': 'Download',
           'export': 'Export',
           'import': 'Import',
           'filter': 'Filter',
           'sort': 'Sort',
           'assign': 'Assign',
-
-          // Error Messages
           'error_occurred': 'An Error Occurred',
           'something_went_wrong': 'Something went wrong',
           'network_error': 'Network connection error',
@@ -184,20 +157,14 @@ class AppTranslations extends Translations {
           'print_functionality_coming_soon': 'Print functionality coming soon',
           'export_functionality_coming_soon':
               'Export functionality coming soon',
-
-          // Auth & Security
           'are_you_sure_logout': 'Are you sure you want to logout?',
           'logged_out_successfully': 'Logged out successfully',
-
-          // Developer Tools
           'system_health': 'System Health',
           'api_debugger': 'API Debugger',
           'performance_monitor': 'Performance Monitor',
           'error_logs': 'Error Logs',
           'cache_manager': 'Cache Manager',
           'database_status': 'Database Status',
-
-          // Error messages
           'network_connection_error': 'Network connection error',
           'request_timeout_error': 'Request timeout',
           'unauthorized_error': 'Unauthorized access',
@@ -205,8 +172,6 @@ class AppTranslations extends Translations {
           'not_found_error': 'Resource not found',
           'server_error': 'Server error',
           'general_error': 'An error occurred',
-
-          // Settings
           'appearance_settings': 'Appearance Settings',
           'system_settings': 'System Settings',
           'data_management': 'Data Management',
@@ -218,23 +183,15 @@ class AppTranslations extends Translations {
           'choose_theme_preference': 'Choose your theme preference',
           'application_language': 'Application Language',
           'choose_app_language': 'Choose application language',
-
-          // Developer Tools
-
-          // Export & Data
           'export_data': 'Export Data',
           'export_data_description': 'Export your data in various formats',
           'select_export_format': 'Select Export Format',
           'select_format': 'Select Format',
-
-          // Validation
           'invalid_number': 'Invalid number',
           'must_be_positive': 'Must be positive',
           'price_too_high': 'Price is too high',
           'invalid_year': 'Invalid year',
           'invalid_url': 'Invalid URL',
-
-          // Additional UI
           'maintenance_mode': 'Maintenance Mode',
           'maintenance_mode_active': 'System is in maintenance mode',
           'maintenance_mode_inactive': 'System is operational',
@@ -242,9 +199,26 @@ class AppTranslations extends Translations {
           'restart_services': 'Restart Services',
           'check_updates': 'Check for Updates',
           'contact_support': 'Contact Support',
+          'admin_panel_login': 'Admin Panel Login',
+          'enter_your_email': 'Enter your email',
+          'enter_your_password': 'Enter your password',
+          'login': 'Login',
+          'please_wait': 'Please wait...',
+          'email': 'Email',
+          'password': 'Password',
+          'login_successful': 'Login Successful',
+          'login_failed_no_token':
+              'Login failed: No token received from server.',
+          'login_failed': 'Login Failed: Invalid credentials or server error.',
+          'email_required': 'Email is required',
+          'password_required': 'Password is required',
+          'invalid_email_format': 'Invalid email format',
         },
+
+        //////////////////////////////////////////////////////////////////
+
+        ///////////////////////////////////////////////////////////////////
         'ar': {
-          // Navigation
           'dashboard': 'لوحة التحكم',
           'admin_users': 'المشرفين',
           'customers': 'العملاء',
@@ -259,8 +233,6 @@ class AppTranslations extends Translations {
           'change_theme': 'تغيير المظهر',
           'change_language': 'تغيير اللغة',
           'logout': 'تسجيل الخروج',
-
-          // Dashboard
           'welcome_admin': 'مرحباً بك في لوحة التحكم',
           'total_users': 'إجمالي المستخدمين',
           'total_orders': 'إجمالي الطلبات',
@@ -274,8 +246,6 @@ class AppTranslations extends Translations {
           'statistics': 'الإحصائيات',
           'manage_all_orders': 'إدارة جميع الطلبات في النظام',
           'all_orders': 'جميع الطلبات',
-
-          // Common
           'search': 'بحث',
           'add_new': 'إضافة جديد',
           'edit': 'تعديل',
@@ -296,8 +266,6 @@ class AppTranslations extends Translations {
           'view_details': 'عرض التفاصيل',
           'retry': 'إعادة المحاولة',
           'copied_to_clipboard': 'تم النسخ إلى الحافظة',
-
-          // User Management
           'user_name': 'اسم المستخدم',
           'customer_name': 'اسم العميل',
           'phone_number': 'رقم الهاتف',
@@ -309,16 +277,12 @@ class AppTranslations extends Translations {
           'pending': 'في الانتظار',
           'approve': 'موافقة',
           'reject': 'رفض',
-
-          // Services
           'service_name': 'اسم الخدمة',
           'service_image': 'صورة الخدمة',
           'price': 'السعر',
           'add_service': 'إضافة خدمة',
           'edit_service': 'تعديل الخدمة',
           'delete_service': 'حذف الخدمة',
-
-          // Orders
           'order_number': 'رقم الطلب',
           'order_details': 'تفاصيل الطلب',
           'order_information': 'معلومات الطلب',
@@ -355,14 +319,10 @@ class AppTranslations extends Translations {
           'print_order': 'طباعة الطلب',
           'export_pdf': 'تصدير PDF',
           'edit_status': 'تعديل الحالة',
-
-          // Order Types
           'home_service': 'خدمة منزلية',
           'workshop_service': 'خدمة الورشة',
           'emergency_service': 'خدمة طوارئ',
           'unknown': 'غير معروف',
-
-          // Payments
           'payment_date': 'تاريخ الدفع',
           'amount': 'المبلغ',
           'cash': 'نقدي',
@@ -371,8 +331,6 @@ class AppTranslations extends Translations {
           'paid': 'مدفوع',
           'failed': 'فشل',
           'refunded': 'مسترد',
-
-          // Vehicles
           'license_plate': 'لوحة الترخيص',
           'vehicle_make': 'صانع السيارة',
           'vehicle_model': 'موديل السيارة',
@@ -380,8 +338,6 @@ class AppTranslations extends Translations {
           'vehicle_id': 'معرف المركبة',
           'no_vehicle_assigned': 'لم يتم تعيين مركبة',
           'vehicle_details_loading': 'جاري تحميل تفاصيل المركبة...',
-
-          // Notifications
           'notification_sent': 'تم إرسال الإشعار بنجاح',
           'user_updated': 'تم تحديث المستخدم بنجاح',
           'service_added': 'تم إضافة الخدمة بنجاح',
@@ -389,31 +345,23 @@ class AppTranslations extends Translations {
           'payment_processed': 'تم معالجة الدفع بنجاح',
           'mark_all_read': 'تحديد الكل كمقروء',
           'send_notification': 'إرسال إشعار',
-
-          // Validation
           'field_required': 'هذا الحقل مطلوب',
           'invalid_email': 'عنوان بريد إلكتروني غير صحيح',
           'invalid_phone': 'رقم هاتف غير صحيح',
           'min_length': 'الحد الأدنى للطول هو @count حرف',
           'max_length': 'الحد الأقصى للطول هو @count حرف',
-
-          // Time/Date
           'years_ago': 'منذ سنوات',
           'months_ago': 'منذ أشهر',
           'days_ago': 'منذ أيام',
           'hours_ago': 'منذ ساعات',
           'minutes_ago': 'منذ دقائق',
           'just_now': 'الآن',
-
-          // Actions
           'download': 'تحميل',
           'export': 'تصدير',
           'import': 'استيراد',
           'filter': 'تصفية',
           'sort': 'ترتيب',
           'assign': 'تعيين',
-
-          // Error Messages
           'error_occurred': 'حدث خطأ',
           'something_went_wrong': 'حدث خطأ ما',
           'network_error': 'خطأ في الاتصال بالشبكة',
@@ -421,19 +369,14 @@ class AppTranslations extends Translations {
           'services_loading': 'جاري تحميل الخدمات...',
           'print_functionality_coming_soon': 'وظيفة الطباعة قريباً',
           'export_functionality_coming_soon': 'وظيفة التصدير قريباً',
-
-          // Auth & Security
           'are_you_sure_logout': 'هل أنت متأكد من تسجيل الخروج؟',
           'logged_out_successfully': 'تم تسجيل الخروج بنجاح',
-
-          // Developer Tools
           'system_health': 'صحة النظام',
           'api_debugger': 'منقح واجهة برمجة التطبيقات',
           'performance_monitor': 'مراقب الأداء',
           'error_logs': 'سجلات الأخطاء',
           'cache_manager': 'مدير ذاكرة التخزين المؤقت',
           'database_status': 'حالة قاعدة البيانات',
-          // رسائل الخطأ
           'network_connection_error': 'خطأ في اتصال الشبكة',
           'request_timeout_error': 'انتهت مهلة الطلب',
           'unauthorized_error': 'دخول غير مصرح به',
@@ -441,8 +384,6 @@ class AppTranslations extends Translations {
           'not_found_error': 'المورد غير موجود',
           'server_error': 'خطأ في الخادم',
           'general_error': 'حدث خطأ ما',
-
-          // الإعدادات
           'appearance_settings': 'إعدادات المظهر',
           'system_settings': 'إعدادات النظام',
           'data_management': 'إدارة البيانات',
@@ -454,21 +395,15 @@ class AppTranslations extends Translations {
           'choose_theme_preference': 'اختر تفضيل السمة',
           'application_language': 'لغة التطبيق',
           'choose_app_language': 'اختر لغة التطبيق',
-
-          // التصدير والبيانات
           'export_data': 'تصدير البيانات',
           'export_data_description': 'تصدير بياناتك بصيغ متعددة',
           'select_export_format': 'اختر صيغة التصدير',
           'select_format': 'اختر الصيغة',
-
-          // التحقق من الصحة
           'invalid_number': 'رقم غير صالح',
           'must_be_positive': 'يجب أن يكون رقمًا موجبًا',
           'price_too_high': 'السعر مرتفع جدًا',
           'invalid_year': 'سنة غير صالحة',
           'invalid_url': 'رابط غير صالح',
-
-          // واجهة المستخدم الإضافية
           'maintenance_mode': 'وضع الصيانة',
           'maintenance_mode_active': 'النظام في وضع الصيانة',
           'maintenance_mode_inactive': 'النظام يعمل بشكل طبيعي',
@@ -476,11 +411,25 @@ class AppTranslations extends Translations {
           'restart_services': 'إعادة تشغيل الخدمات',
           'check_updates': 'التحقق من التحديثات',
           'contact_support': 'الاتصال بالدعم',
+          'admin_panel_login': 'تسجيل دخول لوحة التحكم',
+          'enter_your_email': 'أدخل بريدك الإلكتروني',
+          'enter_your_password': 'أدخل كلمة المرور الخاصة بك',
+          'login': 'تسجيل الدخول',
+          'please_wait': 'يرجى الانتظار...',
+          'email': 'البريد الإلكتروني',
+          'password': 'كلمة المرور',
+          'login_successful': 'تم تسجيل الدخول بنجاح',
+          'login_failed_no_token':
+              'فشل تسجيل الدخول: لم يتم استلام رمز مميز من الخادم.',
+          'login_failed':
+              'فشل تسجيل الدخول: بيانات اعتماد غير صالحة أو خطأ في الخادم.',
+          'email_required': 'البريد الإلكتروني مطلوب',
+          'password_required': 'كلمة المرور مطلوبة',
+          'invalid_email_format': 'صيغة البريد الإلكتروني غير صالحة'
         },
       };
 }
 
-// Extension for easy currency formatting with translations
 extension CurrencyTranslation on double {
   String toCurrency([String? languageCode]) {
     final lang =
@@ -496,7 +445,6 @@ extension CurrencyTranslation on double {
   }
 }
 
-// Extension for localized text from maps
 extension LocalizedText on Map<String, String>? {
   String localized([String? languageCode]) {
     if (this == null || this!.isEmpty) return '';

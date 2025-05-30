@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ecom_modwir/constants.dart';
-import 'package:ecom_modwir/models/order_model.dart';
+import 'package:ecom_modwir/modules/order_model.dart';
 import 'package:ecom_modwir/controllers/orders_controller.dart';
+import 'package:ecom_modwir/controllers/order_detail_controller.dart';
 import 'package:ecom_modwir/controllers/language_controller.dart';
 import 'package:ecom_modwir/utils/app_utils.dart';
 import 'package:ecom_modwir/widgets/license_plate_widget.dart';
@@ -21,12 +22,33 @@ class OrderDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final ordersController = Get.find<OrdersController>();
     final languageController = Get.find<LanguageController>();
+    final orderDetailController = Get.put(OrderDetailController());
+
+    // Load data when screen is built
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      print('Order Detail Screen - Loading data for order: ${order.orderId}');
+      print('Vehicle ID: ${order.vehicleId}');
+
+      // Load data using the simplified method
+      orderDetailController.loadCompleteOrderData(
+          order.orderId, order.vehicleId);
+    });
 
     return Scaffold(
       appBar: AppBar(
         title: Text('${'order_details'.tr} #${order.orderNumber}'),
         elevation: 0,
         actions: [
+          // Debug button to reload data
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: () {
+              print('Manual refresh triggered');
+              orderDetailController.clearData();
+              orderDetailController.loadCompleteOrderData(
+                  order.orderId, order.vehicleId);
+            },
+          ),
           if (canEdit)
             PopupMenuButton<String>(
               onSelected: (value) =>
@@ -71,6 +93,27 @@ class OrderDetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Debug info (remove in production)
+            Container(
+              padding: const EdgeInsets.all(8),
+              margin: const EdgeInsets.only(bottom: 16),
+              decoration: BoxDecoration(
+                color: Colors.blue.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Debug Info:',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text('Order ID: ${order.orderId}'),
+                  Text(
+                      'Vehicle ID: ${order.vehicleId ?? "No vehicle assigned"}'),
+                  Text('Order Number: ${order.orderNumber}'),
+                ],
+              ),
+            ),
+
             // Order Status Header
             _buildOrderStatusHeader(),
 
@@ -88,7 +131,7 @@ class OrderDetailScreen extends StatelessWidget {
                       const SizedBox(height: defaultPadding),
                       _buildCustomerInfoCard(),
                       const SizedBox(height: defaultPadding),
-                      _buildVehicleInfoCard(),
+                      _buildVehicleInfoCard(orderDetailController),
                     ],
                   ),
                 ),
@@ -108,7 +151,7 @@ class OrderDetailScreen extends StatelessWidget {
             const SizedBox(height: defaultPadding),
 
             // Services and Items
-            _buildServicesCard(),
+            _buildServicesCard(orderDetailController),
 
             const SizedBox(height: defaultPadding),
 
@@ -125,6 +168,322 @@ class OrderDetailScreen extends StatelessWidget {
       ),
     );
   }
+
+  Widget _buildVehicleInfoCard(OrderDetailController vehicleController) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const Icon(Icons.directions_car, color: primaryColor),
+                const SizedBox(width: 8),
+                Text(
+                  'Vehicle Information',
+                  style: Get.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            Obx(() {
+              if (vehicleController.isLoadingVehicle.value) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+
+              if ((vehicleController.vehicleError.value?.isNotEmpty ?? false)) {
+                return Center(
+                  child: Column(
+                    children: [
+                      Icon(Icons.error, color: Colors.red, size: 48),
+                      const SizedBox(height: 8),
+                      Text(
+                        vehicleController.vehicleError.value.toString(),
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ],
+                  ),
+                );
+              }
+
+              final vehicle = vehicleController.vehicleData.value;
+              if (vehicle != null) {
+                return Column(
+                  children: [
+                    // Vehicle details
+                    _buildInfoRow('Make:', vehicle.makeName ?? 'N/A'),
+                    _buildInfoRow('Model:', vehicle.modelName ?? 'N/A'),
+                    if (vehicle.year != null)
+                      _buildInfoRow('Year:', vehicle.year.toString()),
+
+                    const SizedBox(height: 16),
+
+                    // License plate
+                    if (vehicle.licensePlateNumber != null)
+                      LicensePlateWidget(
+                        licensePlateData: vehicle.licensePlateNumber,
+                        width: 200,
+                        height: 60,
+                      ),
+                  ],
+                );
+              }
+
+              return Center(
+                child: Text(
+                  'No vehicle assigned to this order',
+                  style: TextStyle(color: Colors.grey[600]),
+                ),
+              );
+            }),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildServicesCard(OrderDetailController orderDetailController) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(defaultPadding),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const Icon(Icons.build, color: primaryColor),
+                const SizedBox(width: 8),
+                Text(
+                  'services_items'.tr,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: defaultPadding),
+            Obx(() {
+              if (orderDetailController.isLoadingItems.value) {
+                return Center(
+                  child: Column(
+                    children: [
+                      const CircularProgressIndicator(),
+                      const SizedBox(height: 8),
+                      Text(
+                        'Loading services...',
+                        style: TextStyle(color: Colors.grey[600]),
+                      ),
+                    ],
+                  ),
+                );
+              }
+
+              if (orderDetailController.itemsError.value != null) {
+                return Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.orange.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: Colors.orange.withOpacity(0.3)),
+                  ),
+                  child: Column(
+                    children: [
+                      Icon(Icons.warning, color: Colors.orange, size: 32),
+                      const SizedBox(height: 8),
+                      Text(
+                        'Services data not available',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'Using mock data for demonstration',
+                        style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 8),
+                      ElevatedButton(
+                        onPressed: () =>
+                            orderDetailController.loadOrderItems(order.orderId),
+                        child: Text('Retry'),
+                      ),
+                    ],
+                  ),
+                );
+              }
+
+              final items = orderDetailController.orderItems;
+              if (items.isEmpty) {
+                return Center(
+                  child: Column(
+                    children: [
+                      Icon(Icons.inbox_outlined,
+                          size: 48, color: Colors.grey[400]),
+                      const SizedBox(height: 8),
+                      Text(
+                        'No services found for this order',
+                        style: TextStyle(color: Colors.grey[600]),
+                      ),
+                    ],
+                  ),
+                );
+              }
+
+              return Column(
+                children: [
+                  // Services Header
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: primaryColor.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                            flex: 3,
+                            child: Text('Service',
+                                style: TextStyle(fontWeight: FontWeight.bold))),
+                        Expanded(
+                            flex: 1,
+                            child: Text('Qty',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.center)),
+                        Expanded(
+                            flex: 2,
+                            child: Text('Price',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.right)),
+                        Expanded(
+                            flex: 2,
+                            child: Text('Total',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.right)),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 8),
+
+                  // Services List
+                  ...items.map((item) => _buildServiceItem(item)).toList(),
+
+                  const SizedBox(height: defaultPadding),
+
+                  // Total Summary
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[50],
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: Colors.grey[300]!),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Total Services (${items.length} items)',
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          AppUtils.formatCurrency(
+                              _calculateTotalServicesAmount(items)),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: primaryColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              );
+            }),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildServiceItem(item) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(color: Colors.grey[200]!),
+        ),
+      ),
+      child: Row(
+        children: [
+          // Service Name
+          Expanded(
+            flex: 3,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  item.itemName,
+                  style: const TextStyle(fontWeight: FontWeight.w500),
+                ),
+                Text(
+                  'ID: ${item.subServiceId}',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.grey[600],
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // Quantity
+          Expanded(
+            flex: 1,
+            child: Text(
+              '${item.quantity}',
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontWeight: FontWeight.w500),
+            ),
+          ),
+
+          // Unit Price
+          Expanded(
+            flex: 2,
+            child: Text(
+              AppUtils.formatCurrency(item.price),
+              textAlign: TextAlign.right,
+              style: TextStyle(color: Colors.grey[700]),
+            ),
+          ),
+
+          // Total Price
+          Expanded(
+            flex: 2,
+            child: Text(
+              AppUtils.formatCurrency(item.totalPrice),
+              textAlign: TextAlign.right,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: primaryColor,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  double _calculateTotalServicesAmount(List items) {
+    return items.fold(0.0, (sum, item) => sum + item.totalPrice);
+  }
+
+  // ... (keep all other existing methods like _buildOrderStatusHeader, etc.)
 
   Widget _buildOrderStatusHeader() {
     return Container(
@@ -259,58 +618,6 @@ class OrderDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildVehicleInfoCard() {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(defaultPadding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                const Icon(Icons.directions_car, color: primaryColor),
-                const SizedBox(width: 8),
-                Text(
-                  'vehicle_information'.tr,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: defaultPadding),
-            if (order.vehicleId != null) ...[
-              _buildInfoRow('vehicle_id'.tr, '#${order.vehicleId}'),
-              const SizedBox(height: 8),
-              // Placeholder for license plate - would need vehicle data
-              Center(
-                child: Container(
-                  padding: const EdgeInsets.all(defaultPadding),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[100],
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Text(
-                    'vehicle_details_loading'.tr,
-                    style: TextStyle(color: Colors.grey[600]),
-                  ),
-                ),
-              ),
-            ] else ...[
-              Center(
-                child: Text(
-                  'no_vehicle_assigned'.tr,
-                  style: TextStyle(color: Colors.grey[600]),
-                ),
-              ),
-            ],
-          ],
-        ),
-      ),
-    );
-  }
-
   Widget _buildPaymentInfoCard() {
     return Card(
       child: Padding(
@@ -395,47 +702,6 @@ class OrderDetailScreen extends StatelessWidget {
                 AppUtils.formatDateTime(order.orderDate),
                 true,
               ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildServicesCard() {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(defaultPadding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                const Icon(Icons.build, color: primaryColor),
-                const SizedBox(width: 8),
-                Text(
-                  'services_items'.tr,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: defaultPadding),
-            // Placeholder for services - would need to fetch from API
-            Container(
-              padding: const EdgeInsets.all(defaultPadding),
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Center(
-                child: Text(
-                  'services_loading'.tr,
-                  style: TextStyle(color: Colors.grey[600]),
-                ),
-              ),
-            ),
           ],
         ),
       ),

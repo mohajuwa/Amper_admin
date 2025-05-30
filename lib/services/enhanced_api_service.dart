@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'package:ecom_modwir/modules/order_item_model.dart';
+import 'package:ecom_modwir/modules/vehicle_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:ecom_modwir/linkapi.dart';
@@ -632,5 +634,114 @@ class EnhancedApiService {
     }
 
     AppUtils.showError(message);
+  }
+
+  // Add these methods to your EnhancedApiService class
+
+// Vehicle Details
+  static Future<Map<String, dynamic>> getVehicleDetails(int vehicleId) async {
+    final response = await _makeRequest('GET',
+        '${AppLink.vehicleView}?vehicle_id=$vehicleId&lang=${Get.find<LanguageController>().currentLanguage.value}');
+
+    if (response['status'] == 'success') {
+      return response['data'];
+    } else {
+      throw Exception(response['message'] ?? 'Failed to load vehicle details');
+    }
+  }
+
+// Order Details with all related data
+  static Future<Map<String, dynamic>> getCompleteOrderDetails(
+      int orderId) async {
+    final response = await _makeRequest('GET',
+        '${AppLink.detailsOrders}?order_id=$orderId&include_items=1&include_vehicle=1&lang=${Get.find<LanguageController>().currentLanguage.value}');
+
+    if (response['status'] == 'success') {
+      return response['data'];
+    } else {
+      throw Exception(
+          response['message'] ?? 'Failed to load complete order details');
+    }
+  }
+
+  // Add these methods to your existing ApiService class (NOT EnhancedApiService)
+
+// Get specific vehicle details
+
+  static Future<Map<String, dynamic>?> getVehicleById(int vehicleId) async {
+    try {
+      String url =
+          '${AppLink.vehicleView}?lang=${Get.find<LanguageController>().currentLanguage.value}&vehicle_id=$vehicleId';
+
+      final response = await _makeRequest('GET', url);
+
+      if (response['status'] == 'success') {
+        List<dynamic> vehiclesJson = response['data'] ?? [];
+
+        if (vehiclesJson.isNotEmpty) {
+          return Map<String, dynamic>.from(vehiclesJson.first);
+        }
+      }
+
+      return null;
+    } catch (e) {
+      print('Enhanced API - Error getting vehicle by ID: $e');
+
+      return null;
+    }
+  }
+
+// Get order details with items (if your backend supports it)
+  static Future<Map<String, dynamic>> getOrderDetailsWithItems(
+      int orderId) async {
+    try {
+      // Try to get order details with items parameter
+      String url =
+          '${AppLink.detailsOrders}?lang=en&order_id=$orderId&include_items=true';
+
+      final response = await http.get(Uri.parse(url), headers: headers);
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+
+        if (data['status'] == 'success') {
+          return data['data'];
+        } else {
+          throw Exception(data['message'] ?? 'Failed to load order details');
+        }
+      } else {
+        throw Exception('HTTP ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('Network error: $e');
+    }
+  }
+
+// Fallback: Get order items separately (if you have a separate endpoint)
+  static Future<List<OrderItemModel>> getOrderItems(int orderId) async {
+    try {
+      // Try a separate endpoint for order items
+      String url = '${AppLink.ordersLink}/items.php?order_id=$orderId&lang=en';
+
+      final response = await http.get(Uri.parse(url), headers: headers);
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+
+        if (data['status'] == 'success') {
+          List<dynamic> itemsJson = data['data'];
+          return itemsJson
+              .map((json) => OrderItemModel.fromJson(json))
+              .toList();
+        } else {
+          return [];
+        }
+      } else {
+        return [];
+      }
+    } catch (e) {
+      print('Error getting order items: $e');
+      return [];
+    }
   }
 }

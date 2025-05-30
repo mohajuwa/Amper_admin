@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 
-import 'package:ecom_modwir/models/sub_service_model.dart';
+import 'package:ecom_modwir/modules/sub_service_model.dart';
 
-import 'package:ecom_modwir/models/car_make_model.dart';
+import 'package:ecom_modwir/modules/car_make_model.dart';
 
 import 'package:ecom_modwir/services/api_service.dart';
 

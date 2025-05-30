@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import 'package:ecom_modwir/models/order_model.dart';
+import 'package:ecom_modwir/modules/order_model.dart';
 
 import 'package:ecom_modwir/services/api_service.dart';
 

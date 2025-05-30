@@ -45,7 +45,7 @@ class AppLink {
   static const String updateVehicle = "$carsMakeLink/update.php";
   static const String getVehicleEssentials = "$carsMakeLink/view.php";
   // ============================ Vehicles  Links ============================//
-  static const String vehiclesLink = "$server/vehicles";
+  static const String vehiclesLink = "$AdminLink/vehicles";
   static const String vehicleAdd = "$vehiclesLink/add.php";
   static const String vehicleUpdate = "$vehiclesLink/update.php";
   static const String vehicleRemove = "$vehiclesLink/remove.php";

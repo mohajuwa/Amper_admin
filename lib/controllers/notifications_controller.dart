@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import 'package:ecom_modwir/models/notification_model.dart';
+import 'package:ecom_modwir/modules/notification_model.dart';
 
 import 'package:ecom_modwir/services/api_service.dart';
 

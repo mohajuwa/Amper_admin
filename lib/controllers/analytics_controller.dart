@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import 'package:ecom_modwir/models/analytics_model.dart';
+import 'package:ecom_modwir/modules/analytics_model.dart';
 
 import 'package:ecom_modwir/services/enhanced_api_service.dart';
 

@@ -1,4 +1,4 @@
-import 'package:ecom_modwir/models/sub_service_model.dart';
+import 'package:ecom_modwir/modules/sub_service_model.dart';
 import 'package:ecom_modwir/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 

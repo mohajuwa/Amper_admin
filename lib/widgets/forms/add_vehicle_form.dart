@@ -1,5 +1,5 @@
 import 'package:ecom_modwir/constants.dart';
-import 'package:ecom_modwir/models/vehicle_model.dart';
+import 'package:ecom_modwir/modules/vehicle_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -199,4 +199,11 @@ class SharedPreferencesService extends GetxService {
   bool isFavorite(String type, String itemId) {
     return getFavorites(type).contains(itemId);
   }
+
+  // Clear Authentication Data
+  Future<void> clearAuthData() async {
+    await removeAuthToken();
+    await removeUserData();
+    // Add any other auth-related keys to remove here
+  }
 }

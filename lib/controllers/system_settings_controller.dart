@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:ecom_modwir/models/system_settings_model.dart';
+import 'package:ecom_modwir/modules/system_settings_model.dart';
 import 'package:ecom_modwir/services/enhanced_api_service.dart';
 
 class SystemSettingsController extends GetxController {

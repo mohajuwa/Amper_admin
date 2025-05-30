@@ -1,4 +1,4 @@
-import 'package:ecom_modwir/models/vehicle_model.dart';
+import 'package:ecom_modwir/modules/vehicle_model.dart';
 import 'package:ecom_modwir/screens/vehicles/vehicle_detail_screen.dart';
 import 'package:ecom_modwir/widgets/forms/add_vehicle_form.dart';
 import 'package:flutter/material.dart';

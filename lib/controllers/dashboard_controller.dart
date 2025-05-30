@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:ecom_modwir/models/dashboard_stats.dart';
+import 'package:ecom_modwir/modules/dashboard_stats.dart';
 import 'package:ecom_modwir/services/api_service.dart';
 
 class DashboardController extends GetxController {

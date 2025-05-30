@@ -1,4 +1,4 @@
-import 'package:ecom_modwir/models/vehicle_model.dart';
+import 'package:ecom_modwir/modules/vehicle_model.dart';
 
 extension VehicleModelExtension on VehicleModel {
   Map<String, dynamic> toJson() {

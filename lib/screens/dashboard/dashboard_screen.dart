@@ -1,24 +1,55 @@
-import 'package:ecom_modwir/responsive.dart';
-import 'package:ecom_modwir/screens/dashboard/components/my_fields.dart';
+import 'package:ecom_modwir/screens/dashboard/components/side_info_panel.dart';
 import 'package:flutter/material.dart';
 
+import 'package:get/get.dart';
+
+import '../../controllers/dashboard_controller.dart';
+
+import '../../controllers/main_controller.dart';
+
+import '../../responsive.dart';
+
 import '../../constants.dart';
+
 import 'components/header.dart';
 
-import 'components/recent_files.dart';
-import 'components/storage_details.dart';
+import 'components/stats_cards.dart';
+
+import 'components/recent_orders_table.dart';
+
+import 'components/analytics_chart.dart';
 
 class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final dashboardController = Get.put(DashboardController());
+
     return SafeArea(
       child: SingleChildScrollView(
         primary: false,
-        padding: EdgeInsets.all(defaultPadding),
+        padding: const EdgeInsets.all(defaultPadding),
         child: Column(
           children: [
-            Header(),
-            SizedBox(height: defaultPadding),
+            const Header(),
+
+            const SizedBox(height: defaultPadding),
+
+            // Stats Cards
+
+            Obx(() {
+              if (dashboardController.isLoading.value) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+
+              return const StatsCards();
+            }),
+
+            const SizedBox(height: defaultPadding),
+
+            // Main content area
+
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -26,25 +57,23 @@ class DashboardScreen extends StatelessWidget {
                   flex: 5,
                   child: Column(
                     children: [
-                      MyFiles(),
-                      SizedBox(height: defaultPadding),
-                      RecentFiles(),
+                      const AnalyticsChart(),
+                      const SizedBox(height: defaultPadding),
+                      const RecentOrdersTable(),
                       if (Responsive.isMobile(context))
-                        SizedBox(height: defaultPadding),
-                      if (Responsive.isMobile(context)) StorageDetails(),
+                        const SizedBox(height: defaultPadding),
                     ],
                   ),
                 ),
                 if (!Responsive.isMobile(context))
-                  SizedBox(width: defaultPadding),
-                // On Mobile means if the screen is less than 850 we don't want to show it
+                  const SizedBox(width: defaultPadding),
                 if (!Responsive.isMobile(context))
-                  Expanded(
+                  const Expanded(
                     flex: 2,
-                    child: StorageDetails(),
+                    child: SideInfoPanel(),
                   ),
               ],
-            )
+            ),
           ],
         ),
       ),

@@ -1,5 +1,6 @@
-// lib/translations/app_translations.dart
+import 'package:ecom_modwir/controllers/language_controller.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class AppTranslations extends Translations {
   @override
@@ -12,11 +13,13 @@ class AppTranslations extends Translations {
           'services': 'Services',
           'sub_services': 'Sub Services',
           'sub_services_by_car': 'Sub Services By Car',
+          'vehicles': 'Vehicles',
           'orders': 'Orders',
           'payments': 'Payments',
+          'notifications': 'Notifications',
+          'settings': 'Settings',
           'change_theme': 'Change Theme',
           'change_language': 'Change Language',
-          'settings': 'Settings',
           'logout': 'Logout',
 
           // Dashboard
@@ -25,10 +28,14 @@ class AppTranslations extends Translations {
           'total_orders': 'Total Orders',
           'total_revenue': 'Total Revenue',
           'pending_orders': 'Pending Orders',
+          'confirmed_orders': 'Confirmed Orders',
+          'in_progress_orders': 'In Progress Orders',
           'completed_orders': 'Completed Orders',
           'active_services': 'Active Services',
           'recent_orders': 'Recent Orders',
           'statistics': 'Statistics',
+          'manage_all_orders': 'Manage all orders in your system',
+          'all_orders': 'All Orders',
 
           // Common
           'search': 'Search',
@@ -40,19 +47,28 @@ class AppTranslations extends Translations {
           'confirm': 'Confirm',
           'loading': 'Loading...',
           'no_data': 'No data available',
+          'no_data_available': 'No data available',
+          'no_orders_found': 'No orders found',
           'success': 'Success',
           'error': 'Error',
           'warning': 'Warning',
           'info': 'Info',
+          'refresh': 'Refresh',
+          'actions': 'Actions',
+          'view_details': 'View Details',
+          'retry': 'Retry',
+          'copied_to_clipboard': 'Copied to clipboard',
 
           // User Management
           'user_name': 'User Name',
+          'customer_name': 'Customer Name',
           'phone_number': 'Phone Number',
           'status': 'Status',
           'created_at': 'Created At',
           'active': 'Active',
           'inactive': 'Inactive',
           'banned': 'Banned',
+          'pending': 'Pending',
           'approve': 'Approve',
           'reject': 'Reject',
 
@@ -66,30 +82,66 @@ class AppTranslations extends Translations {
 
           // Orders
           'order_number': 'Order Number',
+          'order_details': 'Order Details',
+          'order_information': 'Order Information',
+          'customer_information': 'Customer Information',
+          'vehicle_information': 'Vehicle Information',
+          'payment_information': 'Payment Information',
+          'order_timeline': 'Order Timeline',
+          'services_items': 'Services & Items',
+          'order_notes': 'Order Notes',
           'customer': 'Customer',
+          'vendor': 'Vendor',
+          'address': 'Address',
           'order_date': 'Order Date',
           'order_status': 'Order Status',
+          'order_type': 'Order Type',
           'payment_status': 'Payment Status',
+          'payment_method': 'Payment Method',
           'total_amount': 'Total Amount',
-          'pending': 'Pending',
+          'delivery_fee': 'Delivery Fee',
+          'workshop_amount': 'Workshop Amount',
+          'app_commission': 'App Commission',
           'confirmed': 'Confirmed',
           'in_progress': 'In Progress',
           'completed': 'Completed',
           'cancelled': 'Cancelled',
+          'order_placed': 'Order Placed',
+          'order_confirmed': 'Order Confirmed',
+          'update_status': 'Update Status',
+          'update_order_status': 'Update Order Status',
+          'add_note': 'Add Note',
+          'add_order_note': 'Add Order Note',
+          'enter_note': 'Enter note',
+          'note_added_successfully': 'Note added successfully',
+          'print_order': 'Print Order',
+          'export_pdf': 'Export PDF',
+          'edit_status': 'Edit Status',
+
+          // Order Types
+          'home_service': 'Home Service',
+          'workshop_service': 'Workshop Service',
+          'emergency_service': 'Emergency Service',
+          'unknown': 'Unknown',
 
           // Payments
-          'payment_method': 'Payment Method',
           'payment_date': 'Payment Date',
           'amount': 'Amount',
           'cash': 'Cash',
           'card': 'Card',
           'online': 'Online',
+          'paid': 'Paid',
+          'failed': 'Failed',
+          'refunded': 'Refunded',
 
           // Vehicles
           'license_plate': 'License Plate',
           'vehicle_make': 'Vehicle Make',
           'vehicle_model': 'Vehicle Model',
           'vehicle_year': 'Vehicle Year',
+          'vehicle_id': 'Vehicle ID',
+          'no_vehicle_assigned': 'No vehicle assigned',
+          'vehicle_details_loading': 'Loading vehicle details...',
 
           // Notifications
           'notification_sent': 'Notification sent successfully',
@@ -97,6 +149,8 @@ class AppTranslations extends Translations {
           'service_added': 'Service added successfully',
           'order_updated': 'Order updated successfully',
           'payment_processed': 'Payment processed successfully',
+          'mark_all_read': 'Mark All Read',
+          'send_notification': 'Send Notification',
 
           // Validation
           'field_required': 'This field is required',
@@ -105,14 +159,43 @@ class AppTranslations extends Translations {
           'min_length': 'Minimum length is @count characters',
           'max_length': 'Maximum length is @count characters',
 
+          // Time/Date
+          'years_ago': 'years ago',
+          'months_ago': 'months ago',
+          'days_ago': 'days ago',
+          'hours_ago': 'hours ago',
+          'minutes_ago': 'minutes ago',
+          'just_now': 'just now',
+
           // Actions
-          'view_details': 'View Details',
           'download': 'Download',
           'export': 'Export',
           'import': 'Import',
-          'refresh': 'Refresh',
           'filter': 'Filter',
           'sort': 'Sort',
+          'assign': 'Assign',
+
+          // Error Messages
+          'error_occurred': 'An Error Occurred',
+          'something_went_wrong': 'Something went wrong',
+          'network_error': 'Network connection error',
+          'timeout_error': 'Request timeout',
+          'services_loading': 'Loading services...',
+          'print_functionality_coming_soon': 'Print functionality coming soon',
+          'export_functionality_coming_soon':
+              'Export functionality coming soon',
+
+          // Auth & Security
+          'are_you_sure_logout': 'Are you sure you want to logout?',
+          'logged_out_successfully': 'Logged out successfully',
+
+          // Developer Tools
+          'system_health': 'System Health',
+          'api_debugger': 'API Debugger',
+          'performance_monitor': 'Performance Monitor',
+          'error_logs': 'Error Logs',
+          'cache_manager': 'Cache Manager',
+          'database_status': 'Database Status',
         },
         'ar': {
           // Navigation
@@ -122,11 +205,13 @@ class AppTranslations extends Translations {
           'services': 'الخدمات',
           'sub_services': 'الخدمات الفرعية',
           'sub_services_by_car': 'الخدمات حسب السيارة',
+          'vehicles': 'المركبات',
           'orders': 'الطلبات',
           'payments': 'المدفوعات',
+          'notifications': 'الإشعارات',
+          'settings': 'الإعدادات',
           'change_theme': 'تغيير المظهر',
           'change_language': 'تغيير اللغة',
-          'settings': 'الإعدادات',
           'logout': 'تسجيل الخروج',
 
           // Dashboard
@@ -135,10 +220,14 @@ class AppTranslations extends Translations {
           'total_orders': 'إجمالي الطلبات',
           'total_revenue': 'إجمالي الإيرادات',
           'pending_orders': 'الطلبات المعلقة',
+          'confirmed_orders': 'الطلبات المؤكدة',
+          'in_progress_orders': 'الطلبات قيد التنفيذ',
           'completed_orders': 'الطلبات المكتملة',
           'active_services': 'الخدمات النشطة',
           'recent_orders': 'الطلبات الأخيرة',
           'statistics': 'الإحصائيات',
+          'manage_all_orders': 'إدارة جميع الطلبات في النظام',
+          'all_orders': 'جميع الطلبات',
 
           // Common
           'search': 'بحث',
@@ -150,19 +239,28 @@ class AppTranslations extends Translations {
           'confirm': 'تأكيد',
           'loading': 'جاري التحميل...',
           'no_data': 'لا توجد بيانات متاحة',
+          'no_data_available': 'لا توجد بيانات متاحة',
+          'no_orders_found': 'لم يتم العثور على طلبات',
           'success': 'نجح',
           'error': 'خطأ',
           'warning': 'تحذير',
           'info': 'معلومات',
+          'refresh': 'تحديث',
+          'actions': 'الإجراءات',
+          'view_details': 'عرض التفاصيل',
+          'retry': 'إعادة المحاولة',
+          'copied_to_clipboard': 'تم النسخ إلى الحافظة',
 
           // User Management
           'user_name': 'اسم المستخدم',
+          'customer_name': 'اسم العميل',
           'phone_number': 'رقم الهاتف',
           'status': 'الحالة',
           'created_at': 'تاريخ الإنشاء',
           'active': 'نشط',
           'inactive': 'غير نشط',
           'banned': 'محظور',
+          'pending': 'في الانتظار',
           'approve': 'موافقة',
           'reject': 'رفض',
 
@@ -176,30 +274,66 @@ class AppTranslations extends Translations {
 
           // Orders
           'order_number': 'رقم الطلب',
+          'order_details': 'تفاصيل الطلب',
+          'order_information': 'معلومات الطلب',
+          'customer_information': 'معلومات العميل',
+          'vehicle_information': 'معلومات المركبة',
+          'payment_information': 'معلومات الدفع',
+          'order_timeline': 'جدول الطلب الزمني',
+          'services_items': 'الخدمات والعناصر',
+          'order_notes': 'ملاحظات الطلب',
           'customer': 'العميل',
+          'vendor': 'المقدم',
+          'address': 'العنوان',
           'order_date': 'تاريخ الطلب',
           'order_status': 'حالة الطلب',
+          'order_type': 'نوع الطلب',
           'payment_status': 'حالة الدفع',
+          'payment_method': 'طريقة الدفع',
           'total_amount': 'المبلغ الإجمالي',
-          'pending': 'معلق',
+          'delivery_fee': 'رسوم التوصيل',
+          'workshop_amount': 'مبلغ الورشة',
+          'app_commission': 'عمولة التطبيق',
           'confirmed': 'مؤكد',
           'in_progress': 'قيد التنفيذ',
           'completed': 'مكتمل',
           'cancelled': 'ملغي',
+          'order_placed': 'تم تقديم الطلب',
+          'order_confirmed': 'تم تأكيد الطلب',
+          'update_status': 'تحديث الحالة',
+          'update_order_status': 'تحديث حالة الطلب',
+          'add_note': 'إضافة ملاحظة',
+          'add_order_note': 'إضافة ملاحظة للطلب',
+          'enter_note': 'أدخل الملاحظة',
+          'note_added_successfully': 'تم إضافة الملاحظة بنجاح',
+          'print_order': 'طباعة الطلب',
+          'export_pdf': 'تصدير PDF',
+          'edit_status': 'تعديل الحالة',
+
+          // Order Types
+          'home_service': 'خدمة منزلية',
+          'workshop_service': 'خدمة الورشة',
+          'emergency_service': 'خدمة طوارئ',
+          'unknown': 'غير معروف',
 
           // Payments
-          'payment_method': 'طريقة الدفع',
           'payment_date': 'تاريخ الدفع',
           'amount': 'المبلغ',
           'cash': 'نقدي',
           'card': 'بطاقة',
           'online': 'إلكتروني',
+          'paid': 'مدفوع',
+          'failed': 'فشل',
+          'refunded': 'مسترد',
 
           // Vehicles
           'license_plate': 'لوحة الترخيص',
           'vehicle_make': 'صانع السيارة',
           'vehicle_model': 'موديل السيارة',
           'vehicle_year': 'سنة السيارة',
+          'vehicle_id': 'معرف المركبة',
+          'no_vehicle_assigned': 'لم يتم تعيين مركبة',
+          'vehicle_details_loading': 'جاري تحميل تفاصيل المركبة...',
 
           // Notifications
           'notification_sent': 'تم إرسال الإشعار بنجاح',
@@ -207,6 +341,8 @@ class AppTranslations extends Translations {
           'service_added': 'تم إضافة الخدمة بنجاح',
           'order_updated': 'تم تحديث الطلب بنجاح',
           'payment_processed': 'تم معالجة الدفع بنجاح',
+          'mark_all_read': 'تحديد الكل كمقروء',
+          'send_notification': 'إرسال إشعار',
 
           // Validation
           'field_required': 'هذا الحقل مطلوب',
@@ -215,14 +351,69 @@ class AppTranslations extends Translations {
           'min_length': 'الحد الأدنى للطول هو @count حرف',
           'max_length': 'الحد الأقصى للطول هو @count حرف',
 
+          // Time/Date
+          'years_ago': 'منذ سنوات',
+          'months_ago': 'منذ أشهر',
+          'days_ago': 'منذ أيام',
+          'hours_ago': 'منذ ساعات',
+          'minutes_ago': 'منذ دقائق',
+          'just_now': 'الآن',
+
           // Actions
-          'view_details': 'عرض التفاصيل',
           'download': 'تحميل',
           'export': 'تصدير',
           'import': 'استيراد',
-          'refresh': 'تحديث',
           'filter': 'تصفية',
           'sort': 'ترتيب',
+          'assign': 'تعيين',
+
+          // Error Messages
+          'error_occurred': 'حدث خطأ',
+          'something_went_wrong': 'حدث خطأ ما',
+          'network_error': 'خطأ في الاتصال بالشبكة',
+          'timeout_error': 'انتهت مهلة الطلب',
+          'services_loading': 'جاري تحميل الخدمات...',
+          'print_functionality_coming_soon': 'وظيفة الطباعة قريباً',
+          'export_functionality_coming_soon': 'وظيفة التصدير قريباً',
+
+          // Auth & Security
+          'are_you_sure_logout': 'هل أنت متأكد من تسجيل الخروج؟',
+          'logged_out_successfully': 'تم تسجيل الخروج بنجاح',
+
+          // Developer Tools
+          'system_health': 'صحة النظام',
+          'api_debugger': 'منقح واجهة برمجة التطبيقات',
+          'performance_monitor': 'مراقب الأداء',
+          'error_logs': 'سجلات الأخطاء',
+          'cache_manager': 'مدير ذاكرة التخزين المؤقت',
+          'database_status': 'حالة قاعدة البيانات',
         },
       };
+}
+
+// Extension for easy currency formatting with translations
+extension CurrencyTranslation on double {
+  String toCurrency([String? languageCode]) {
+    final lang =
+        languageCode ?? Get.find<LanguageController>().currentLanguage.value;
+    final formatter = NumberFormat('#,##0.00');
+    final formattedAmount = formatter.format(this);
+
+    if (lang == 'ar') {
+      return '$formattedAmount ر.س';
+    } else {
+      return 'SAR $formattedAmount';
+    }
+  }
+}
+
+// Extension for localized text from maps
+extension LocalizedText on Map<String, String>? {
+  String localized([String? languageCode]) {
+    if (this == null || this!.isEmpty) return '';
+
+    final lang =
+        languageCode ?? Get.find<LanguageController>().currentLanguage.value;
+    return this![lang] ?? this!['en'] ?? this!.values.first;
+  }
 }

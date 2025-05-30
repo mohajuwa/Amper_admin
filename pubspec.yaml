@@ -1,83 +1,306 @@
 name: ecom_modwir
-description: ecommerce for modwir developer
-
-# The following line prevents the package from being accidentally published to
-# pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: "none" # Remove this line if you wish to publish to pub.dev
-
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+description: Modwir Admin Panel - A comprehensive Flutter admin dashboard for managing automotive services.
+publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.1.2 <4.0.0"
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons:
+  # State Management
+  get:
 
-  google_fonts:
+  # UI Components
+  cupertino_icons:
   flutter_svg:
+  google_fonts:
   fl_chart:
-  provider:
-  firebase_core: 
-  get: 
-  web_socket_channel: ^3.0.3
+
+  # HTTP & API
+  http:
+  web_socket_channel:
+
+  # Local Storage
+  shared_preferences:
+
+  # Internationalization
+  intl:
+
+  # Firebase (if needed)
+  firebase_core:
+  firebase_messaging:
+
+  # File handling
+  file_picker:
+  path_provider:
+
+  # Image handling
+  cached_network_image:
+  image_picker:
+
+  # Permissions
+  permission_handler:
+
+  # URL launcher
+  url_launcher:
+
+  # Device info
+  device_info_plus:
+
+  # Connectivity
+  connectivity_plus:
+
+  # Platform detection
+  flutter_platform_widgets:
+
+  # JSON handling
+  json_annotation:
+
+  # Date/Time
+  datetime_picker_formfield:
+
+  # Utils
+  package_info_plus:
+  crypto:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints:
+  build_runner:
+  json_serializable:
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter.
 flutter:
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
+  # Assets
   assets:
     - assets/images/
+    - assets/images/flags/
     - assets/icons/
-  #   - images/a_dot_ham.jpeg
+    - assets/fonts/
 
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware.
+  # Fonts
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Poppins-ExtraBold.ttf
+          weight: 800
 
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
+    - family: Tajawal
+      fonts:
+        - asset: assets/fonts/Tajawal-Regular.ttf
+        - asset: assets/fonts/Tajawal-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Tajawal-Bold.ttf
+          weight: 700
 
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
+    - family: Courier
+      fonts:
+        - asset: assets/fonts/CourierPrime-Regular.ttf
+        - asset: assets/fonts/CourierPrime-Bold.ttf
+          weight: 700
+
+# Configuration for different environments
+flutter_intl:
+  enabled: true
+  class_name: S
+  main_locale: en
+  arb_dir: lib/l10n
+  output_dir: lib/generated
+
+# Build configurations
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo.png"
+  min_sdk_android: 21
+
+flutter_native_splash:
+  color: "#2697FF"
+  image: assets/images/logo.png
+  android_12:
+    image: assets/images/logo.png
+    color: "#2697FF"
+
+# Analysis options
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+  errors:
+    invalid_annotation_target: ignore
+    missing_required_param: warning
+    missing_return: warning
+
+linter:
+  rules:
+    # Error rules
+    avoid_slow_async_io: true
+    cancel_subscriptions: true
+    close_sinks: true
+    comment_references: true
+    control_flow_in_finally: true
+    empty_statements: true
+    hash_and_equals: true
+    invariant_booleans: true
+    iterable_contains_unrelated_type: true
+    list_remove_unrelated_type: true
+    literal_only_boolean_expressions: true
+    no_adjacent_strings_in_list: true
+    no_duplicate_case_values: true
+    prefer_void_to_null: true
+    test_types_in_equals: true
+    throw_in_finally: true
+    unnecessary_statements: true
+    unrelated_type_equality_checks: true
+    use_key_in_widget_constructors: true
+    valid_regexps: true
+
+    # Style rules
+    always_declare_return_types: true
+    always_put_control_body_on_new_line: true
+    always_specify_types: false
+    annotate_overrides: true
+    avoid_annotating_with_dynamic: false
+    avoid_as: false
+    avoid_catches_without_on_clauses: false
+    avoid_catching_errors: false
+    avoid_classes_with_only_static_members: true
+    avoid_double_and_int_checks: true
+    avoid_empty_else: true
+    avoid_field_initializers_in_const_classes: true
+    avoid_function_literals_in_foreach_calls: true
+    avoid_init_to_null: true
+    avoid_null_checks_in_equality_operators: true
+    avoid_positional_boolean_parameters: true
+    avoid_print: true
+    avoid_redundant_argument_values: true
+    avoid_relative_lib_imports: true
+    avoid_renaming_method_parameters: true
+    avoid_return_types_on_setters: true
+    avoid_returning_null: false
+    avoid_returning_null_for_future: true
+    avoid_returning_null_for_void: true
+    avoid_returning_this: false
+    avoid_setters_without_getters: true
+    avoid_shadowing_type_parameters: true
+    avoid_single_cascade_in_expression_statements: true
+    avoid_types_as_parameter_names: true
+    avoid_types_on_closure_parameters: false
+    avoid_unnecessary_containers: true
+    avoid_unused_constructor_parameters: true
+    avoid_void_async: true
+    await_only_futures: true
+    camel_case_extensions: true
+    camel_case_types: true
+    cascade_invocations: false
+    constant_identifier_names: true
+    curly_braces_in_flow_control_structures: true
+    directives_ordering: true
+    empty_catches: true
+    empty_constructor_bodies: true
+    file_names: true
+    flutter_style_todos: true
+    implementation_imports: true
+    join_return_with_assignment: true
+    leading_newlines_in_multiline_strings: true
+    library_names: true
+    library_prefixes: true
+    lines_longer_than_80_chars: false
+    missing_whitespace_between_adjacent_strings: true
+    no_leading_underscores_for_library_prefixes: true
+    no_leading_underscores_for_local_identifiers: true
+    non_constant_identifier_names: true
+    null_closures: true
+    omit_local_variable_types: false
+    one_member_abstracts: true
+    only_throw_errors: true
+    overridden_fields: true
+    package_api_docs: false
+    package_names: true
+    package_prefixed_library_names: true
+    parameter_assignments: true
+    prefer_adjacent_string_concatenation: true
+    prefer_asserts_in_initializer_lists: true
+    prefer_asserts_with_message: true
+    prefer_collection_literals: true
+    prefer_conditional_assignment: true
+    prefer_const_constructors: true
+    prefer_const_constructors_in_immutables: true
+    prefer_const_declarations: true
+    prefer_const_literals_to_create_immutables: true
+    prefer_constructors_over_static_methods: true
+    prefer_contains: true
+    prefer_equal_for_default_values: true
+    prefer_expression_function_bodies: false
+    prefer_final_fields: true
+    prefer_final_in_for_each: true
+    prefer_final_locals: false
+    prefer_for_elements_to_map_fromIterable: true
+    prefer_foreach: true
+    prefer_function_declarations_over_variables: true
+    prefer_generic_function_type_aliases: true
+    prefer_if_elements_to_conditional_expressions: true
+    prefer_if_null_operators: true
+    prefer_initializing_formals: true
+    prefer_inlined_adds: true
+    prefer_int_literals: true
+    prefer_interpolation_to_compose_strings: true
+    prefer_is_empty: true
+    prefer_is_not_empty: true
+    prefer_is_not_operator: true
+    prefer_iterable_whereType: true
+    prefer_mixin: true
+    prefer_null_aware_operators: true
+    prefer_relative_imports: false
+    prefer_single_quotes: true
+    prefer_spread_collections: true
+    prefer_typing_uninitialized_variables: true
+    provide_deprecation_message: true
+    recursive_getters: true
+    sized_box_for_whitespace: true
+    slash_for_doc_comments: true
+    sort_child_properties_last: true
+    sort_constructors_first: true
+    sort_pub_dependencies: true
+    sort_unnamed_constructors_first: true
+    type_annotate_public_apis: false
+    type_init_formals: true
+    unawaited_futures: true
+    unnecessary_await_in_return: true
+    unnecessary_brace_in_string_interps: true
+    unnecessary_const: true
+    unnecessary_getters_setters: true
+    unnecessary_lambdas: true
+    unnecessary_new: true
+    unnecessary_null_aware_assignments: true
+    unnecessary_null_checks: true
+    unnecessary_null_in_if_null_operators: true
+    unnecessary_overrides: true
+    unnecessary_parenthesis: true
+    unnecessary_raw_strings: true
+    unnecessary_string_escapes: true
+    unnecessary_string_interpolations: true
+    unnecessary_this: true
+    use_build_context_synchronously: true
+    use_full_hex_values_for_flutter_colors: true
+    use_function_type_syntax_for_parameters: true
+    use_is_even_rather_than_modulo: true
+    use_named_constants: true
+    use_raw_strings: true
+    use_rethrow_when_possible: true
+    use_setters_to_change_properties: true
+    use_string_buffers: true
+    use_to_and_as_if_applicable: true
+    void_checks: true

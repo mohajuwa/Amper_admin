@@ -196,6 +196,52 @@ class AppTranslations extends Translations {
           'error_logs': 'Error Logs',
           'cache_manager': 'Cache Manager',
           'database_status': 'Database Status',
+
+          // Error messages
+          'network_connection_error': 'Network connection error',
+          'request_timeout_error': 'Request timeout',
+          'unauthorized_error': 'Unauthorized access',
+          'forbidden_error': 'Forbidden action',
+          'not_found_error': 'Resource not found',
+          'server_error': 'Server error',
+          'general_error': 'An error occurred',
+
+          // Settings
+          'appearance_settings': 'Appearance Settings',
+          'system_settings': 'System Settings',
+          'data_management': 'Data Management',
+          'maintenance_settings': 'Maintenance Settings',
+          'about_application': 'About Application',
+          'manage_system_settings': 'Manage System Settings',
+          'save_all_settings': 'Save All Settings',
+          'theme_mode': 'Theme Mode',
+          'choose_theme_preference': 'Choose your theme preference',
+          'application_language': 'Application Language',
+          'choose_app_language': 'Choose application language',
+
+          // Developer Tools
+
+          // Export & Data
+          'export_data': 'Export Data',
+          'export_data_description': 'Export your data in various formats',
+          'select_export_format': 'Select Export Format',
+          'select_format': 'Select Format',
+
+          // Validation
+          'invalid_number': 'Invalid number',
+          'must_be_positive': 'Must be positive',
+          'price_too_high': 'Price is too high',
+          'invalid_year': 'Invalid year',
+          'invalid_url': 'Invalid URL',
+
+          // Additional UI
+          'maintenance_mode': 'Maintenance Mode',
+          'maintenance_mode_active': 'System is in maintenance mode',
+          'maintenance_mode_inactive': 'System is operational',
+          'clear_cache': 'Clear Cache',
+          'restart_services': 'Restart Services',
+          'check_updates': 'Check for Updates',
+          'contact_support': 'Contact Support',
         },
         'ar': {
           // Navigation
@@ -387,6 +433,49 @@ class AppTranslations extends Translations {
           'error_logs': 'سجلات الأخطاء',
           'cache_manager': 'مدير ذاكرة التخزين المؤقت',
           'database_status': 'حالة قاعدة البيانات',
+          // رسائل الخطأ
+          'network_connection_error': 'خطأ في اتصال الشبكة',
+          'request_timeout_error': 'انتهت مهلة الطلب',
+          'unauthorized_error': 'دخول غير مصرح به',
+          'forbidden_error': 'عملية غير مسموح بها',
+          'not_found_error': 'المورد غير موجود',
+          'server_error': 'خطأ في الخادم',
+          'general_error': 'حدث خطأ ما',
+
+          // الإعدادات
+          'appearance_settings': 'إعدادات المظهر',
+          'system_settings': 'إعدادات النظام',
+          'data_management': 'إدارة البيانات',
+          'maintenance_settings': 'إعدادات الصيانة',
+          'about_application': 'حول التطبيق',
+          'manage_system_settings': 'إدارة إعدادات النظام',
+          'save_all_settings': 'حفظ جميع الإعدادات',
+          'theme_mode': 'وضع السمة',
+          'choose_theme_preference': 'اختر تفضيل السمة',
+          'application_language': 'لغة التطبيق',
+          'choose_app_language': 'اختر لغة التطبيق',
+
+          // التصدير والبيانات
+          'export_data': 'تصدير البيانات',
+          'export_data_description': 'تصدير بياناتك بصيغ متعددة',
+          'select_export_format': 'اختر صيغة التصدير',
+          'select_format': 'اختر الصيغة',
+
+          // التحقق من الصحة
+          'invalid_number': 'رقم غير صالح',
+          'must_be_positive': 'يجب أن يكون رقمًا موجبًا',
+          'price_too_high': 'السعر مرتفع جدًا',
+          'invalid_year': 'سنة غير صالحة',
+          'invalid_url': 'رابط غير صالح',
+
+          // واجهة المستخدم الإضافية
+          'maintenance_mode': 'وضع الصيانة',
+          'maintenance_mode_active': 'النظام في وضع الصيانة',
+          'maintenance_mode_inactive': 'النظام يعمل بشكل طبيعي',
+          'clear_cache': 'مسح ذاكرة التخزين المؤقت',
+          'restart_services': 'إعادة تشغيل الخدمات',
+          'check_updates': 'التحقق من التحديثات',
+          'contact_support': 'الاتصال بالدعم',
         },
       };
 }

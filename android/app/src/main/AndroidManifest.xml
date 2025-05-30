@@ -28,7 +28,7 @@
     </queries>
     <application
     android:label="Amper Admin"
-    android:icon="@mipmap/ic_launcher"
+    android:icon="@mipmap/launcher_icon"
     android:name="${applicationName}">
         <activity
             android:name=".MainActivity"

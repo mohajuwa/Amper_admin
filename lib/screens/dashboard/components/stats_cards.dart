@@ -3,11 +3,11 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 
-import '../../../controllers/dashboard_controller.dart';
+import 'package:ecom_modwir/controllers/dashboard_controller.dart';
 
-import '../../../responsive.dart';
+import 'package:ecom_modwir/responsive.dart';
 
-import '../../../constants.dart';
+import 'package:ecom_modwir/constants.dart';
 
 class StatsCards extends StatelessWidget {
   const StatsCards({Key? key}) : super(key: key);

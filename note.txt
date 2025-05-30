@@ -1,0 +1,663 @@
+
+
+I want you to complete and optimize the existing Flutter project with the following requirements:
+
+1. Use Unused Resources:
+   Identify and utilize any unused files, widgets, or classes already present in the project to avoid redundancy.
+
+2. Implement SharedPreferences:
+   Use `SharedPreferences` to save and persist the user's language and theme mode settings across sessions. Currently, changing the theme mode doesn't work as expected.
+
+3. Fix and Complete Functionality:
+
+   * Several parts of the app are not functional or not properly set up.
+   * Some classes/widgets are missing — please create them where necessary.
+   * A number of features are currently hardcoded instead of being dynamic from my API — please integrate API responses properly and make the data dynamic.
+
+4. Fix Import Paths:
+
+   * Clean up and correct all import paths.
+   * Replace relative imports like `../folder_name/file_name.dart` with proper package imports such as `package:ecom_modwir/folder_name/file_name.dart`.
+
+5. My API Folder Structure:
+
+notes:
+[
+    depinging on language make the app display the data in that language.
+    the currency is Saudi Arabia currency , not doller.
+    and make sure that we add everything we need to finish the project.  
+]
+
+ [
+    
+                    📂 Directory structure of: haytham_store
+                    ├── 📁 .git
+                    │   └── 📁 workflows
+                    │       └── 📄 admin_panel_ci.yml      
+                    ├── 📄 .htaccess
+                    ├── 📄 access_token_cloud_messaging.php
+                    ├── 📁 address
+                    │   ├── 📄 add.php
+                    │   ├── 📄 edit.php
+                    │   ├── 📄 status.php
+                    │   └── 📄 view.php
+                    ├── 📁 admin
+                    │   ├── 📁 analytics
+                    │   │   └── 📄 advanced_reports.php    
+                    │   ├── 📁 auth
+                    │   │   ├── 📄 login.php
+                    │   │   ├── 📄 resend.php
+                    │   │   └── 📄 verfiycode.php
+                    │   ├── 📄 bulk_operations.php
+                    │   ├── 📄 cached_dashboard.php        
+                    │   ├── 📁 cars
+                    │   │   ├── 📄 create.php
+                    │   │   ├── 📄 models.php
+                    │   │   ├── 📄 product_by_car.php
+                    │   │   ├── 📄 updateWithLang.php
+                    │   │   └── 📄 view.php
+                    │   ├── 📄 create_structure.py
+                    │   ├── 📄 dashboard.php
+                    │   ├── 📁 dev_tools
+                    │   │   ├── 📄 api_debugger.php
+                    │   │   └── 📄 system_monitor.php
+                    │   ├── 📄 export.php
+                    │   ├── 📁 monitoring
+                    │   │   └── 📄 index.php
+                    │   ├── 📁 notifications
+                    │   │   ├── 📄 mark_all_read.php
+                    │   │   ├── 📄 mark_read.php
+                    │   │   ├── 📄 notification.php
+                    │   │   ├── 📄 stats.php
+                    │   │   └── 📄 view.php
+                    │   ├── 📁 orders
+                    │   │   ├── 📄 archive.php
+                    │   │   ├── 📄 cancel.php
+                    │   │   ├── 📄 delete.php
+                    │   │   ├── 📄 details.php
+                    │   │   ├── 📄 pending.php
+                    │   │   ├── 📄 save_attachment_files.php
+                    │   │   └── 📄 update_status.php
+                    │   ├── 📁 payments
+                    │   │   ├── 📄 create.php
+                    │   │   ├── 📄 stats.php
+                    │   │   ├── 📄 update_status.php
+                    │   │   └── 📄 view.php
+                    │   ├── 📁 performance
+                    │   │   └── 📄 database_optimizer.php
+                    │   ├── 📁 realtime
+                    │   │   └── 📄 broadcast_endpoint.php
+                    │   ├── 📁 reports
+                    │   │   └── 📄 advanced_reports.php
+                    │   ├── 📁 search
+                    │   │   └── 📄 advanced_search.php
+                    │   ├── 📁 services
+                    │   │   ├── 📄 create.php
+                    │   │   ├── 📄 delete.php
+                    │   │   ├── 📄 fault_type.php
+                    │   │   ├── 📄 services_display.php
+                    │   │   ├── 📄 sub_service_create.php
+                    │   │   ├── 📄 sub_service_update.php
+                    │   │   ├── 📄 sub_services_display.php
+                    │   │   └── 📄 update.php
+                    │   ├── 📁 settings
+                    │   │   ├── 📄 update.php
+                    │   │   └── 📄 view.php
+                    │   ├── 📄 tree_view.py
+                    │   ├── 📁 users
+                    │   │   ├── 📄 create.php
+                    │   │   ├── 📄 delete.php
+                    │   │   ├── 📄 stats.php
+                    │   │   ├── 📄 update_status.php
+                    │   │   └── 📄 view.php
+                    │   └── 📁 vehicles
+                    │       ├── 📄 add.php
+                    │       ├── 📄 delete_from_vehicles.php
+                    │       ├── 📄 remove.php
+                    │       ├── 📄 update.php
+                    │       └── 📄 view.php
+                    ├── 📄 api_test.sh
+                    ├── 📁 auth
+                    │   ├── 📄 login.php
+                    │   ├── 📄 logout.php
+                    │   ├── 📄 resend.php
+                    │   ├── 📄 signup.php
+                    │   └── 📄 verfiycode.php
+                    ├── 📄 backup_database.sh
+                    ├── 📄 backup_files.sh
+                    ├── 📁 cars
+                    │   ├── 📄 car_makes_and_models.json
+                    │   ├── 📄 product_by_car.php
+                    │   └── 📄 view.php
+                    ├── 📄 cars.json
+                    ├── 📄 cars_updated.json
+                    ├── 📁 cart
+                    │   ├── 📄 add.php
+                    │   ├── 📄 delete.php
+                    │   ├── 📄 getcountitems.php
+                    │   └── 📄 view.php
+                    ├── 📁 categories
+                    │   └── 📄 view.php
+                    ├── 📄 composer.json
+                    ├── 📁 config
+                    │   ├── 📄 logging.php
+                    │   ├── 📄 optimization.php
+                    │   └── 📄 security.php
+                    ├── 📄 connect.php
+                    ├── 📁 coupon
+                    │   └── 📄 checkcoupon.php
+                    ├── 📁 delivery
+                    │   ├── 📁 auth
+                    │   │   ├── 📄 login.php
+                    │   │   ├── 📄 resend.php
+                    │   │   ├── 📄 signup.php
+                    │   │   └── 📄 verfiycode.php
+                    │   ├── 📁 forgetpassword
+                    │   │   ├── 📄 checkemail.php
+                    │   │   ├── 📄 resetpassword.php
+                    │   │   └── 📄 verifycode.php
+                    │   └── 📁 orders
+                    │       ├── 📄 accepted.php
+                    │       ├── 📄 approve.php
+                    │       ├── 📄 archive.php
+                    │       ├── 📄 details.php
+                    │       ├── 📄 done.php
+                    │       └── 📄 pending.php
+                    ├── 📁 forgetpassword
+                    │   ├── 📄 checkemail.php
+                    │   ├── 📄 resetpassword.php
+                    │   └── 📄 verifycode.php
+                    ├── 📄 functions.php
+                    ├── 📄 home.php
+                    ├── 📄 import_cars.php
+                    ├── 📄 import_log.txt
+                    ├── 📁 middleware
+                    │   ├── 📄 auth_middleware.php
+                    │   ├── 📄 cache_manager.php
+                    │   ├── 📄 performance_monitor.php
+                    │   └── 📄 rate_limiter.php
+                    ├── 📄 models.json
+                    ├── 📄 node.py
+                    ├── 📄 notes.txt
+                    ├── 📁 notifications
+                    │   ├── 📄 mark_all_read.php
+                    │   ├── 📄 mark_read.php
+                    │   └── 📄 notification.php
+                    ├── 📄 offers.php
+                    ├── 📁 orders
+                    │   ├── 📄 archive.php
+                    │   ├── 📄 cancel.php
+                    │   ├── 📄 checkout.php
+                    │   ├── 📄 delete.php
+                    │   ├── 📄 details.php
+                    │   ├── 📄 pending.php
+                    │   ├── 📄 process_payment.php
+                    │   └── 📄 save_attachment_files.php
+                    ├── 📄 popularity_makes.py
+                    ├── 📄 rating.php
+                    ├── 📄 service-account.json
+                    ├── 📄 service_key.json
+                    ├── 📁 services
+                    │   ├── 📄 fault_type.php
+                    │   ├── 📄 search.php
+                    │   ├── 📄 services.php
+                    │   ├── 📄 services_display.php
+                    │   └── 📄 sub_services_display.php
+                    ├── 📄 test.php
+                    ├── 📁 tests
+                    │   ├── 📁 Api
+                    │   │   ├── 📄 DashboardTest.php
+                    │   │   ├── 📄 DatabaseTest.php
+                    │   │   └── 📄 UsersTest.php
+                    │   ├── 📁 Integration
+                    │   │   └── 📄 WorkflowTest.php
+                    │   ├── 📄 TestCase.php
+                    │   ├── 📄 bootstrap.php
+                    │   └── 📄 phpunit.xml
+                    ├── 📄 tree_view.py
+                    ├── 📁 upload
+                    │   ├── 📁 attachments
+                    │   │   ├── 📄 2000_scaled_1000051164.png
+                    │   │   ├── 📄 4224_scaled_1000045563.png
+                    │   │   ├── 📄 5228_scaled_1000051392.jpg
+                    │   │   ├── 📄 5807_pexels-janetrangdoan-1132047.jpg
+                    │   │   ├── 📄 7596_20190220_172751.png
+                    │   │   ├── 📄 8551_IMG-20250520-WA0001.jpg
+                    │   │   └── 📄 9959_Screenshot_20250519-013514.png
+                    │   ├── 📁 cars
+                    │   │   ├── 📄 9ff.png
+                    │   │   ├── 📄 abadal.png
+                    │   │   ├── 📄 abarth.png
+                    │   │   ├── 📄 abbott-detroit.png
+                    │   │   ├── 📄 abt.png
+                    │   │   ├── 📄 ac.png
+                    │   │   ├── 📄 acura.png
+                    │   │   ├── 📄 aiways.png
+                    │   │   ├── 📄 aixam.png
+                    │   │   ├── 📄 alfa-romeo.png
+                    │   │   ├── 📄 alpina.png
+                    │   │   ├── 📄 alpine.png
+                    │   │   ├── 📄 alta.png
+                    │   │   ├── 📄 alvis.png
+                    │   │   ├── 📄 amc.png
+                    │   │   ├── 📄 apollo.png
+                    │   │   ├── 📄 arash.png
+                    │   │   ├── 📄 arcfox.png
+                    │   │   ├── 📄 ariel.png
+                    │   │   ├── 📄 aro.png
+                    │   │   ├── 📄 arrinera.png
+                    │   │   ├── 📄 arrival.png
+                    │   │   ├── 📄 artega.png
+                    │   │   ├── 📄 ascari.png
+                    │   │   ├── 📄 askam.png
+                    │   │   ├── 📄 aspark.png
+                    │   │   ├── 📄 aston-martin.png
+                    │   │   ├── 📄 atalanta.png
+                    │   │   ├── 📄 auburn.png
+                    │   │   ├── 📄 audi-sport.png
+                    │   │   ├── 📄 audi.png
+                    │   │   ├── 📄 austin.png
+                    │   │   ├── 📄 autobacs.png
+                    │   │   ├── 📄 autobianchi.png
+                    │   │   ├── 📄 axon.png
+                    │   │   ├── 📄 bac.png
+                    │   │   ├── 📄 baic-motor.png
+                    │   │   ├── 📄 baojun.png
+                    │   │   ├── 📄 beiben.png
+                    │   │   ├── 📄 bentley.png
+                    │   │   ├── 📄 berkeley.png
+                    │   │   ├── 📄 berliet.png
+                    │   │   ├── 📄 bertone.png
+                    │   │   ├── 📄 bestune.png
+                    │   │   ├── 📄 bharatbenz.png
+                    │   │   ├── 📄 bitter.png
+                    │   │   ├── 📄 bizzarrini.png
+                    │   │   ├── 📄 bmw-m.png
+                    │   │   ├── 📄 bmw.png
+                    │   │   ├── 📄 borgward.png
+                    │   │   ├── 📄 bowler.png
+                    │   │   ├── 📄 brabus.png
+                    │   │   ├── 📄 brammo.png
+                    │   │   ├── 📄 brilliance.png
+                    │   │   ├── 📄 bristol.png
+                    │   │   ├── 📄 brooke.png
+                    │   │   ├── 📄 bufori.png
+                    │   │   ├── 📄 bugatti.png
+                    │   │   ├── 📄 buick.png
+                    │   │   ├── 📄 byd.png
+                    │   │   ├── 📄 byton.png
+                    │   │   ├── 📄 cadillac.png
+                    │   │   ├── 📄 camc.png
+                    │   │   ├── 📄 canoo.png
+                    │   │   ├── 📄 caparo.png
+                    │   │   ├── 📄 carlsson.png
+                    │   │   ├── 📄 caterham.png
+                    │   │   ├── 📄 changan.png
+                    │   │   ├── 📄 changfeng.png
+                    │   │   ├── 📄 chery.png
+                    │   │   ├── 📄 chevrolet-corvette.png
+                    │   │   ├── 📄 chevrolet.png
+                    │   │   ├── 📄 chrysler.png
+                    │   │   ├── 📄 cisitalia.png
+                    │   │   ├── 📄 citroen.png
+                    │   │   ├── 📄 cizeta.png
+                    │   │   ├── 📄 cole.png
+                    │   │   ├── 📄 corre-la-licorne.png
+                    │   │   ├── 📄 dacia.png
+                    │   │   ├── 📄 daewoo.png
+                    │   │   ├── 📄 daf.png
+                    │   │   ├── 📄 daihatsu.png
+                    │   │   ├── 📄 daimler.png
+                    │   │   ├── 📄 dartz.png
+                    │   │   ├── 📄 datsun.png
+                    │   │   ├── 📄 david-brown.png
+                    │   │   ├── 📄 dayun.png
+                    │   │   ├── 📄 de-tomaso.png
+                    │   │   ├── 📄 delage.png
+                    │   │   ├── 📄 desoto.png
+                    │   │   ├── 📄 detroit-electric.png
+                    │   │   ├── 📄 devel-sixteen.png
+                    │   │   ├── 📄 diatto.png
+                    │   │   ├── 📄 dina.png
+                    │   │   ├── 📄 dkw.png
+                    │   │   ├── 📄 dmc.png
+                    │   │   ├── 📄 dodge-viper.png
+                    │   │   ├── 📄 dodge.png
+                    │   │   ├── 📄 dongfeng.png
+                    │   │   ├── 📄 donkervoort.png
+                    │   │   ├── 📄 drako.png
+                    │   │   ├── 📄 ds.png
+                    │   │   ├── 📄 duesenberg.png
+                    │   │   ├── 📄 eagle.png
+                    │   │   ├── 📄 edag.png
+                    │   │   ├── 📄 edsel.png
+                    │   │   ├── 📄 eicher.png
+                    │   │   ├── 📄 elemental.png
+                    │   │   ├── 📄 elfin.png
+                    │   │   ├── 📄 elva.png
+                    │   │   ├── 📄 englon.png
+                    │   │   ├── 📄 erf.png
+                    │   │   ├── 📄 eterniti.png
+                    │   │   ├── 📄 exeed.png
+                    │   │   ├── 📄 facel-vega.png
+                    │   │   ├── 📄 faraday-future.png
+                    │   │   ├── 📄 faw-jiefang.png
+                    │   │   ├── 📄 faw.png
+                    │   │   ├── 📄 ferrari.png
+                    │   │   ├── 📄 fiat.png
+                    │   │   ├── 📄 fioravanti.png
+                    │   │   ├── 📄 fisker.png
+                    │   │   ├── 📄 foden.png
+                    │   │   ├── 📄 force-motors.png
+                    │   │   ├── 📄 ford-mustang.png
+                    │   │   ├── 📄 ford.png
+                    │   │   ├── 📄 foton.png
+                    │   │   ├── 📄 fpv.png
+                    │   │   ├── 📄 franklin.png
+                    │   │   ├── 📄 freightliner.png
+                    │   │   ├── 📄 fso.png
+                    │   │   ├── 📄 gac-group.png
+                    │   │   ├── 📄 gardner-douglas.png
+                    │   │   ├── 📄 gaz.png
+                    │   │   ├── 📄 geely.png
+                    │   │   ├── 📄 general-motors.png
+                    │   │   ├── 📄 genesis.png
+                    │   │   ├── 📄 geo.png
+                    │   │   ├── 📄 geometry.png
+                    │   │   ├── 📄 gilbern.png
+                    │   │   ├── 📄 gillet.png
+                    │   │   ├── 📄 ginetta.png
+                    │   │   ├── 📄 gmc.png
+                    │   │   ├── 📄 golden-dragon.png
+                    │   │   ├── 📄 gonow.png
+                    │   │   ├── 📄 great-wall.png
+                    │   │   ├── 📄 grinnall.png
+                    │   │   ├── 📄 gumpert.png
+                    │   │   ├── 📄 hafei.png
+                    │   │   ├── 📄 haima.png
+                    │   │   ├── 📄 haval.png
+                    │   │   ├── 📄 hawtai.png
+                    │   │   ├── 📄 hennessey.png
+                    │   │   ├── 📄 higer.png
+                    │   │   ├── 📄 hillman.png
+                    │   │   ├── 📄 hindustan-motors.png
+                    │   │   ├── 📄 hino.png
+                    │   │   ├── 📄 hiphi.png
+                    │   │   ├── 📄 hispano-suiza.png
+                    │   │   ├── 📄 holden.png
+                    │   │   ├── 📄 hommell.png
+                    │   │   ├── 📄 honda.png
+                    │   │   ├── 📄 hongqi.png
+                    │   │   ├── 📄 hongyan.png
+                    │   │   ├── 📄 horch.png
+                    │   │   ├── 📄 hsv.png
+                    │   │   ├── 📄 hudson.png
+                    │   │   ├── 📄 hummer.png
+                    │   │   ├── 📄 hupmobile.png
+                    │   │   ├── 📄 hyundai.png
+                    │   │   ├── 📄 ic-bus.png
+                    │   │   ├── 📄 ih.png
+                    │   │   ├── 📄 ikco.png
+                    │   │   ├── 📄 infiniti.png
+                    │   │   ├── 📄 innocenti.png
+                    │   │   ├── 📄 intermeccanica.png
+                    │   │   ├── 📄 international.png
+                    │   │   ├── 📄 irizar.png
+                    │   │   ├── 📄 isdera.png
+                    │   │   ├── 📄 iso.png
+                    │   │   ├── 📄 isuzu.png
+                    │   │   ├── 📄 iveco.png
+                    │   │   ├── 📄 jac.png
+                    │   │   ├── 📄 jaguar.png
+                    │   │   ├── 📄 jawa.png
+                    │   │   ├── 📄 jba-motors.png
+                    │   │   ├── 📄 jeep.png
+                    │   │   ├── 📄 jensen.png
+                    │   │   ├── 📄 jetta.png
+                    │   │   ├── 📄 jmc.png
+                    │   │   ├── 📄 kaiser.png
+                    │   │   ├── 📄 kamaz.png
+                    │   │   ├── 📄 karlmann-king.png
+                    │   │   ├── 📄 karma.png
+                    │   │   ├── 📄 keating.png
+                    │   │   ├── 📄 kenworth.png
+                    │   │   ├── 📄 kia.png
+                    │   │   ├── 📄 king-long.png
+                    │   │   ├── 📄 koenigsegg.png
+                    │   │   ├── 📄 ktm.png
+                    │   │   ├── 📄 lada.png
+                    │   │   ├── 📄 lagonda.png
+                    │   │   ├── 📄 lamborghini.png
+                    │   │   ├── 📄 lancia.png
+                    │   │   ├── 📄 land-rover.png
+                    │   │   ├── 📄 landwind.png
+                    │   │   ├── 📄 laraki.png
+                    │   │   ├── 📄 leapmotor.png
+                    │   │   ├── 📄 levc.png
+                    │   │   ├── 📄 lexus.png
+                    │   │   ├── 📄 leyland.png
+                    │   │   ├── 📄 li-auto.png
+                    │   │   ├── 📄 lifan.png
+                    │   │   ├── 📄 ligier.png
+                    │   │   ├── 📄 lincoln.png
+                    │   │   ├── 📄 lister.png
+                    │   │   ├── 📄 lloyd.png
+                    │   │   ├── 📄 lobini.png
+                    │   │   ├── 📄 lordstown.png
+                    │   │   ├── 📄 lotus.png
+                    │   │   ├── 📄 lucid.png
+                    │   │   ├── 📄 luxgen.png
+                    │   │   ├── 📄 lynk-and-co.png
+                    │   │   ├── 📄 mack.png
+                    │   │   ├── 📄 mahindra.png
+                    │   │   ├── 📄 man.png
+                    │   │   ├── 📄 mansory.png
+                    │   │   ├── 📄 marcos.png
+                    │   │   ├── 📄 marlin.png
+                    │   │   ├── 📄 maserati.png
+                    │   │   ├── 📄 mastretta.png
+                    │   │   ├── 📄 maxus.png
+                    │   │   ├── 📄 maybach.png
+                    │   │   ├── 📄 maz.png
+                    │   │   ├── 📄 mazda.png
+                    │   │   ├── 📄 mazzanti.png
+                    │   │   ├── 📄 mclaren.png
+                    │   │   ├── 📄 melkus.png
+                    │   │   ├── 📄 mercedes-amg.png
+                    │   │   ├── 📄 mercedes-benz.png
+                    │   │   ├── 📄 mercury.png
+                    │   │   ├── 📄 merkur.png
+                    │   │   ├── 📄 mev.png
+                    │   │   ├── 📄 mg.png
+                    │   │   ├── 📄 microcar.png
+                    │   │   ├── 📄 mini.png
+                    │   │   ├── 📄 mitsubishi.png
+                    │   │   ├── 📄 mitsuoka.png
+                    │   │   ├── 📄 mk.png
+                    │   │   ├── 📄 morgan.png
+                    │   │   ├── 📄 morris.png
+                    │   │   ├── 📄 mosler.png
+                    │   │   ├── 📄 navistar.png
+                    │   │   ├── 📄 nevs.png
+                    │   │   ├── 📄 nikola.png
+                    │   │   ├── 📄 nio.png
+                    │   │   ├── 📄 nissan-gt-r.png
+                    │   │   ├── 📄 nissan-nismo.png
+                    │   │   ├── 📄 nissan-z.png
+                    │   │   ├── 📄 nissan.png
+                    │   │   ├── 📄 noble.png
+                    │   │   ├── 📄 oldsmobile.png
+                    │   │   ├── 📄 oltcit.png
+                    │   │   ├── 📄 opel.png
+                    │   │   ├── 📄 osca.png
+                    │   │   ├── 📄 paccar.png
+                    │   │   ├── 📄 packard.png
+                    │   │   ├── 📄 pagani.png
+                    │   │   ├── 📄 panhard.png
+                    │   │   ├── 📄 panoz.png
+                    │   │   ├── 📄 pegaso.png
+                    │   │   ├── 📄 perodua.png
+                    │   │   ├── 📄 peterbilt.png
+                    │   │   ├── 📄 peugeot.png
+                    │   │   ├── 📄 pgo.png
+                    │   │   ├── 📄 pierce-arrow.png
+                    │   │   ├── 📄 pininfarina.png
+                    │   │   ├── 📄 plymouth.png
+                    │   │   ├── 📄 polestar.png
+                    │   │   ├── 📄 pontiac.png
+                    │   │   ├── 📄 porsche.png
+                    │   │   ├── 📄 praga.png
+                    │   │   ├── 📄 premier.png
+                    │   │   ├── 📄 prodrive.png
+                    │   │   ├── 📄 proton.png
+                    │   │   ├── 📄 qoros.png
+                    │   │   ├── 📄 radical.png
+                    │   │   ├── 📄 ram.png
+                    │   │   ├── 📄 rambler.png
+                    │   │   ├── 📄 ranz.png
+                    │   │   ├── 📄 renault-samsung.png
+                    │   │   ├── 📄 renault.png
+                    │   │   ├── 📄 rezvani.png
+                    │   │   ├── 📄 riley.png
+                    │   │   ├── 📄 rimac.png
+                    │   │   ├── 📄 rinspeed.png
+                    │   │   ├── 📄 rivian.png
+                    │   │   ├── 📄 roewe.png
+                    │   │   ├── 📄 rolls-royce.png
+                    │   │   ├── 📄 ronart.png
+                    │   │   ├── 📄 rossion.png
+                    │   │   ├── 📄 rover.png
+                    │   │   ├── 📄 ruf.png
+                    │   │   ├── 📄 saab.png
+                    │   │   ├── 📄 saic-motor.png
+                    │   │   ├── 📄 saipa.png
+                    │   │   ├── 📄 saleen.png
+                    │   │   ├── 📄 saturn.png
+                    │   │   ├── 📄 scania.png
+                    │   │   ├── 📄 scion.png
+                    │   │   ├── 📄 seat.png
+                    │   │   ├── 📄 setra.png
+                    │   │   ├── 📄 shacman.png
+                    │   │   ├── 📄 simca.png
+                    │   │   ├── 📄 singer.png
+                    │   │   ├── 📄 singulato.png
+                    │   │   ├── 📄 sinotruk.png
+                    │   │   ├── 📄 sisu.png
+                    │   │   ├── 📄 skoda.png
+                    │   │   ├── 📄 smart.png
+                    │   │   ├── 📄 soueast.png
+                    │   │   ├── 📄 spania-gta.png
+                    │   │   ├── 📄 spirra.png
+                    │   │   ├── 📄 spyker.png
+                    │   │   ├── 📄 srt.png
+                    │   │   ├── 📄 ssangyong.png
+                    │   │   ├── 📄 ssc.png
+                    │   │   ├── 📄 sterling.png
+                    │   │   ├── 📄 studebaker.png
+                    │   │   ├── 📄 stutz.png
+                    │   │   ├── 📄 subaru.png
+                    │   │   ├── 📄 suffolk.png
+                    │   │   ├── 📄 suzuki.png
+                    │   │   ├── 📄 talbot.png
+                    │   │   ├── 📄 tata.png
+                    │   │   ├── 📄 tatra.png
+                    │   │   ├── 📄 tauro.png
+                    │   │   ├── 📄 techart.png
+                    │   │   ├── 📄 tesla.png
+                    │   │   ├── 📄 toyota-alphard.png
+                    │   │   ├── 📄 toyota-century.png
+                    │   │   ├── 📄 toyota-crown.png
+                    │   │   ├── 📄 toyota-gazoo-racing.png
+                    │   │   ├── 📄 toyota.png
+                    │   │   ├── 📄 tramontana.png
+                    │   │   ├── 📄 trion.png
+                    │   │   ├── 📄 triumph.png
+                    │   │   ├── 📄 troller.png
+                    │   │   ├── 📄 tucker.png
+                    │   │   ├── 📄 tvr.png
+                    │   │   ├── 📄 uaz.png
+                    │   │   ├── 📄 ud.png
+                    │   │   ├── 📄 ultima.png
+                    │   │   ├── 📄 vandenbrink.png
+                    │   │   ├── 📄 vauxhall.png
+                    │   │   ├── 📄 vector.png
+                    │   │   ├── 📄 vencer.png
+                    │   │   ├── 📄 venturi.png
+                    │   │   ├── 📄 venucia.png
+                    │   │   ├── 📄 vinfast.png
+                    │   │   ├── 📄 vlf.png
+                    │   │   ├── 📄 volkswagen.png
+                    │   │   ├── 📄 volvo.png
+                    │   │   ├── 📄 w-motors.png
+                    │   │   ├── 📄 wanderer.png
+                    │   │   ├── 📄 wartburg.png
+                    │   │   ├── 📄 weltmeister.png
+                    │   │   ├── 📄 western-star.png
+                    │   │   ├── 📄 westfield.png
+                    │   │   ├── 📄 wey.png
+                    │   │   ├── 📄 wiesmann.png
+                    │   │   ├── 📄 willys-overland.png
+                    │   │   ├── 📄 workhorse.png
+                    │   │   ├── 📄 wuling.png
+                    │   │   ├── 📄 xpeng.png
+                    │   │   ├── 📄 yulon.png
+                    │   │   ├── 📄 yutong.png
+                    │   │   ├── 📄 zarooq-motors.png
+                    │   │   ├── 📄 zastava.png
+                    │   │   ├── 📄 zaz.png
+                    │   │   ├── 📄 zeekr.png
+                    │   │   ├── 📄 zenos.png
+                    │   │   ├── 📄 zenvo.png
+                    │   │   ├── 📄 zhongtong.png
+                    │   │   ├── 📄 zinoro.png
+                    │   │   └── 📄 zotye.png
+                    │   ├── 📁 categories
+                    │   │   ├── 📄 batteries.svg
+                    │   │   ├── 📄 battery_bold.svg
+                    │   │   ├── 📄 battery_change.svg
+                    │   │   ├── 📄 car_crush.svg
+                    │   │   ├── 📄 engine.svg
+                    │   │   ├── 📄 maintenance.svg
+                    │   │   ├── 📄 tire_change.svg
+                    │   │   ├── 📄 tow_truck.svg
+                    │   │   └── 📄 tow_truck_outline.svg
+                    │   ├── 📁 offers
+                    │   │   └── 📄 offer_img_1.png
+                    │   └── 📁 vehicles
+                    │       ├── 📄 corolla_2020.png
+                    │       └── 📄 elantra_2020.jpg
+                    ├── 📁 vehicles
+                    │   ├── 📄 add.php
+                    │   ├── 📄 delete_from_vehicles.php
+                    │   ├── 📄 remove.php
+                    │   ├── 📄 update.php
+                    │   └── 📄 view.php
+                    ├── 📁 vendor
+                    │   ├── 📁 address
+                    │   │   ├── 📄 add.php
+                    │   │   ├── 📄 edit.php
+                    │   │   ├── 📄 status.php
+                    │   │   └── 📄 view.php
+                    │   ├── 📁 auth
+                    │   │   ├── 📄 login.php
+                    │   │   └── 📄 signup.php
+                    │   ├── 📁 notifications
+                    │   │   ├── 📄 mark_all_read.php
+                    │   │   ├── 📄 mark_read.php
+                    │   │   └── 📄 notification.php
+                    │   └── 📁 orders
+                    │       ├── 📄 archive.php
+                    │       ├── 📄 cancel.php
+                    │       ├── 📄 checkout.php
+                    │       ├── 📄 delete.php
+                    │       ├── 📄 details.php
+                    │       ├── 📄 pending.php
+                    │       ├── 📄 process_payment.php
+                    │       └── 📄 save_attachment_files.php
+                    └── 📁 websocket
+                        ├── 📄 broadcast_helper.php
+                        └── 📄 server.php
+ ]
+Goal:
+Make the project fully functional, maintainable, and scalable. Ensure that theme switching, localization, and all dynamic data loading from the API work as intended.
+

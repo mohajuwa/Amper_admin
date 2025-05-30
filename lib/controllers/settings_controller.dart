@@ -1,7 +1,7 @@
 import 'package:ecom_modwir/utils/app_utils.dart';
 import 'package:get/get.dart';
 
-import '../services/api_service.dart';
+import 'package:ecom_modwir/services/api_service.dart';
 
 class SettingsController extends GetxController {
   var isLoading = false.obs;

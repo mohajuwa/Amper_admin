@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../services/enhanced_api_service.dart';
+import 'package:ecom_modwir/services/enhanced_api_service.dart';
 
 class AdvancedAnalyticsController extends GetxController {
   var isLoading = false.obs;

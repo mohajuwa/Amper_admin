@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../../controllers/notifications_controller.dart';
+import 'package:ecom_modwir/controllers/notifications_controller.dart';
 
-import '../../controllers/language_controller.dart';
+import 'package:ecom_modwir/controllers/language_controller.dart';
 
-import '../../constants.dart';
+import 'package:ecom_modwir/constants.dart';
 
-import '../dashboard/components/header.dart';
+import 'package:ecom_modwir/screens/dashboard/components/header.dart';
 
-import '../../utils/app_utils.dart';
+import 'package:ecom_modwir/utils/app_utils.dart';
 
 class NotificationsScreen extends StatelessWidget {
   @override

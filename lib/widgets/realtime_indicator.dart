@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/realtime_controller.dart';
+import 'package:ecom_modwir/controllers/realtime_controller.dart';
 
-import '../services/websocket_service.dart';
+import 'package:ecom_modwir/services/websocket_service.dart';
 
-import '../constants.dart';
+import 'package:ecom_modwir/constants.dart';
 
 class RealtimeIndicator extends StatelessWidget {
   @override

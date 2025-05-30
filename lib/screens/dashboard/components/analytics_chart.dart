@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../constants.dart';
+import 'package:ecom_modwir/constants.dart';
 
 class AnalyticsChart extends StatelessWidget {
   const AnalyticsChart({Key? key}) : super(key: key);

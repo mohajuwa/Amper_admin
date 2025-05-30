@@ -3,12 +3,12 @@ import 'package:ecom_modwir/screens/vehicles/vehicle_detail_screen.dart';
 import 'package:ecom_modwir/widgets/forms/add_vehicle_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../controllers/vehicles_controller.dart';
-import '../../controllers/language_controller.dart';
-import '../../widgets/license_plate_widget.dart';
-import '../../constants.dart';
-import '../../responsive.dart';
-import '../dashboard/components/header.dart';
+import 'package:ecom_modwir/controllers/vehicles_controller.dart';
+import 'package:ecom_modwir/controllers/language_controller.dart';
+import 'package:ecom_modwir/widgets/license_plate_widget.dart';
+import 'package:ecom_modwir/constants.dart';
+import 'package:ecom_modwir/responsive.dart';
+import 'package:ecom_modwir/screens/dashboard/components/header.dart';
 
 class VehiclesScreen extends StatelessWidget {
   @override

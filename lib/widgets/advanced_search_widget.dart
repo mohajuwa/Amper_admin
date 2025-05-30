@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controllers/search_controller.dart';
-import '../constants.dart';
+import 'package:ecom_modwir/controllers/search_controller.dart';
+import 'package:ecom_modwir/constants.dart';
 
 class AdvancedSearchWidget extends StatelessWidget {
-  final AdvancedSearchController searchController = Get.put(AdvancedSearchController());
+  final AdvancedSearchController searchController =
+      Get.put(AdvancedSearchController());
   final TextEditingController textController = TextEditingController();
 
   @override
@@ -22,21 +23,23 @@ class AdvancedSearchWidget extends StatelessWidget {
             children: [
               // Search type dropdown
               Obx(() => DropdownButton<String>(
-                value: searchController.searchType.value,
-                items: [
-                  DropdownMenuItem(value: 'global', child: Text('All')),
-                  DropdownMenuItem(value: 'orders', child: Text('Orders')),
-                  DropdownMenuItem(value: 'users', child: Text('Users')),
-                  DropdownMenuItem(value: 'vehicles', child: Text('Vehicles')),
-                  DropdownMenuItem(value: 'services', child: Text('Services')),
-                ],
-                onChanged: (value) {
-                  searchController.searchType.value = value!;
-                },
-              )),
-              
+                    value: searchController.searchType.value,
+                    items: [
+                      DropdownMenuItem(value: 'global', child: Text('All')),
+                      DropdownMenuItem(value: 'orders', child: Text('Orders')),
+                      DropdownMenuItem(value: 'users', child: Text('Users')),
+                      DropdownMenuItem(
+                          value: 'vehicles', child: Text('Vehicles')),
+                      DropdownMenuItem(
+                          value: 'services', child: Text('Services')),
+                    ],
+                    onChanged: (value) {
+                      searchController.searchType.value = value!;
+                    },
+                  )),
+
               const SizedBox(width: defaultPadding),
-              
+
               // Search input
               Expanded(
                 child: TextField(
@@ -45,30 +48,31 @@ class AdvancedSearchWidget extends StatelessWidget {
                     hintText: 'Search...',
                     prefixIcon: const Icon(Icons.search),
                     suffixIcon: Obx(() => searchController.isLoading.value
-                      ? const SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: CircularProgressIndicator(strokeWidth: 2),
-                        )
-                      : IconButton(
-                          icon: const Icon(Icons.clear),
-                          onPressed: () {
-                            textController.clear();
-                            searchController.clearSearch();
-                          },
-                        )),
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          )
+                        : IconButton(
+                            icon: const Icon(Icons.clear),
+                            onPressed: () {
+                              textController.clear();
+                              searchController.clearSearch();
+                            },
+                          )),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                   onSubmitted: (value) {
-                    searchController.performSearch(value, type: searchController.searchType.value);
+                    searchController.performSearch(value,
+                        type: searchController.searchType.value);
                   },
                 ),
               ),
-              
+
               const SizedBox(width: defaultPadding),
-              
+
               // Search button
               ElevatedButton.icon(
                 onPressed: () {
@@ -82,9 +86,9 @@ class AdvancedSearchWidget extends StatelessWidget {
               ),
             ],
           ),
-          
+
           const SizedBox(height: defaultPadding),
-          
+
           // Recent searches
           Obx(() {
             if (searchController.recentSearches.isNotEmpty) {
@@ -94,7 +98,8 @@ class AdvancedSearchWidget extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Recent Searches', style: Theme.of(context).textTheme.titleSmall),
+                      Text('Recent Searches',
+                          style: Theme.of(context).textTheme.titleSmall),
                       TextButton(
                         onPressed: searchController.clearRecentSearches,
                         child: Text('Clear'),
@@ -103,13 +108,18 @@ class AdvancedSearchWidget extends StatelessWidget {
                   ),
                   Wrap(
                     spacing: 8,
-                    children: searchController.recentSearches.take(5).map((search) =>
-                      Chip(
-                        label: Text(search),
-                        onDeleted: () => searchController.recentSearches.remove(search),
-                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      ),
-                    ).toList(),
+                    children: searchController.recentSearches
+                        .take(5)
+                        .map(
+                          (search) => Chip(
+                            label: Text(search),
+                            onDeleted: () =>
+                                searchController.recentSearches.remove(search),
+                            materialTapTargetSize:
+                                MaterialTapTargetSize.shrinkWrap,
+                          ),
+                        )
+                        .toList(),
                   ),
                   const SizedBox(height: defaultPadding),
                 ],
@@ -117,13 +127,13 @@ class AdvancedSearchWidget extends StatelessWidget {
             }
             return const SizedBox.shrink();
           }),
-          
+
           // Search results
           Obx(() {
             if (searchController.searchResults.isEmpty) {
               return const SizedBox.shrink();
             }
-            
+
             return SearchResultsWidget(results: searchController.searchResults);
           }),
         ],
@@ -135,7 +145,8 @@ class AdvancedSearchWidget extends StatelessWidget {
 class SearchResultsWidget extends StatelessWidget {
   final Map<String, dynamic> results;
 
-  const SearchResultsWidget({Key? key, required this.results}) : super(key: key);
+  const SearchResultsWidget({Key? key, required this.results})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -144,35 +155,34 @@ class SearchResultsWidget extends StatelessWidget {
       children: [
         Text('Search Results', style: Theme.of(context).textTheme.titleMedium),
         const SizedBox(height: defaultPadding),
-        
         ...results.entries.map((entry) {
           final categoryName = entry.key;
           final items = List<Map<String, dynamic>>.from(entry.value);
-          
+
           if (items.isEmpty) return const SizedBox.shrink();
-          
+
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 categoryName.capitalize!,
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  color: primaryColor,
-                ),
+                      color: primaryColor,
+                    ),
               ),
               const SizedBox(height: 8),
               ...items.map((item) => ListTile(
-                title: Text(item['title'] ?? 'Unknown'),
-                subtitle: Text(item['subtitle'] ?? ''),
-                leading: CircleAvatar(
-                  backgroundColor: primaryColor.withOpacity(0.1),
-                  child: Icon(
-                    _getIconForType(item['type']),
-                    color: primaryColor,
-                  ),
-                ),
-                onTap: () => _navigateToDetails(item),
-              )),
+                    title: Text(item['title'] ?? 'Unknown'),
+                    subtitle: Text(item['subtitle'] ?? ''),
+                    leading: CircleAvatar(
+                      backgroundColor: primaryColor.withOpacity(0.1),
+                      child: Icon(
+                        _getIconForType(item['type']),
+                        color: primaryColor,
+                      ),
+                    ),
+                    onTap: () => _navigateToDetails(item),
+                  )),
               const SizedBox(height: defaultPadding),
             ],
           );
@@ -183,11 +193,16 @@ class SearchResultsWidget extends StatelessWidget {
 
   IconData _getIconForType(String? type) {
     switch (type) {
-      case 'user': return Icons.person;
-      case 'order': return Icons.shopping_cart;
-      case 'service': return Icons.build;
-      case 'vehicle': return Icons.directions_car;
-      default: return Icons.search;
+      case 'user':
+        return Icons.person;
+      case 'order':
+        return Icons.shopping_cart;
+      case 'service':
+        return Icons.build;
+      case 'vehicle':
+        return Icons.directions_car;
+      default:
+        return Icons.search;
     }
   }
 

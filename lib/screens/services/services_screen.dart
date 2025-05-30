@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../controllers/services_controller.dart';
-import '../../controllers/language_controller.dart';
-import '../../constants.dart';
-import '../dashboard/components/header.dart';
+import 'package:ecom_modwir/controllers/services_controller.dart';
+import 'package:ecom_modwir/controllers/language_controller.dart';
+import 'package:ecom_modwir/constants.dart';
+import 'package:ecom_modwir/screens/dashboard/components/header.dart';
 
 class ServicesScreen extends StatelessWidget {
   @override

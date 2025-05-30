@@ -1,7 +1,7 @@
 // lib/controllers/vehicles_controller.dart
 import 'package:get/get.dart';
-import '../models/vehicle_model.dart';
-import '../services/api_service.dart';
+import 'package:ecom_modwir/models/vehicle_model.dart';
+import 'package:ecom_modwir/services/api_service.dart';
 
 class VehiclesController extends GetxController {
   var isLoading = false.obs;
@@ -76,4 +76,3 @@ class VehiclesController extends GetxController {
     }
   }
 }
-

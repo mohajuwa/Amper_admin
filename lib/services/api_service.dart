@@ -2,25 +2,25 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../linkapi.dart';
+import 'package:ecom_modwir/linkapi.dart';
 
-import '../models/user_model.dart';
+import 'package:ecom_modwir/models/user_model.dart';
 
-import '../models/service_model.dart';
+import 'package:ecom_modwir/models/service_model.dart';
 
-import '../models/order_model.dart';
+import 'package:ecom_modwir/models/order_model.dart';
 
-import '../models/payment_model.dart';
+import 'package:ecom_modwir/models/payment_model.dart';
 
-import '../models/dashboard_stats.dart';
+import 'package:ecom_modwir/models/dashboard_stats.dart';
 
-import '../models/vehicle_model.dart';
+import 'package:ecom_modwir/models/vehicle_model.dart';
 
-import '../models/car_make_model.dart';
+import 'package:ecom_modwir/models/car_make_model.dart';
 
-import '../models/sub_service_model.dart';
+import 'package:ecom_modwir/models/sub_service_model.dart';
 
-import '../models/notification_model.dart';
+import 'package:ecom_modwir/models/notification_model.dart';
 
 class ApiService {
   static const String baseUrl = AppLink.server;
@@ -535,4 +535,6 @@ class ApiService {
       throw Exception('Network error: $e');
     }
   }
+
+  static assignServiceToCar(int subServiceId, int makeId) {}
 }

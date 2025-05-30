@@ -4,18 +4,18 @@ import 'package:http/http.dart' as http;
 
 import 'package:get/get.dart';
 
-import '../linkapi.dart';
+import 'package:ecom_modwir/linkapi.dart';
 
-import '../controllers/language_controller.dart';
+import 'package:ecom_modwir/controllers/language_controller.dart';
 
-import '../utils/app_utils.dart';
+import 'package:ecom_modwir/utils/app_utils.dart';
 
 class EnhancedApiService {
   static const String baseUrl = AppLink.server;
 
   static String? _authToken;
 
-  static String _apiKey = 'admin_panel_key_2024';
+  static String _apiKey = 'admin_panel_key_2025';
 
   static Map<String, String> get headers => {
         'Content-Type': 'application/json; charset=utf-8',
@@ -249,10 +249,4 @@ class EnhancedApiService {
       throw Exception('Upload error: $e');
     }
   }
-
-  static getSystemMonitorData(String s) {}
-
-  static clearSystemCache({required bool all}) {}
-
-  static toggleMaintenanceMode() {}
 }

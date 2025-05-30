@@ -1,7 +1,7 @@
 // lib/widgets/license_plate_widget.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controllers/language_controller.dart';
+import 'package:ecom_modwir/controllers/language_controller.dart';
 
 class LicensePlateWidget extends StatelessWidget {
   final Map<String, String>? licensePlateData;

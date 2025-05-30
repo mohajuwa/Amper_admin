@@ -5,11 +5,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 
-import '../../../controllers/theme_controller.dart';
+import 'package:ecom_modwir/controllers/theme_controller.dart';
 
-import '../../../controllers/language_controller.dart';
+import 'package:ecom_modwir/controllers/language_controller.dart';
 
-import '../../../constants.dart';
+import 'package:ecom_modwir/constants.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({Key? key}) : super(key: key);

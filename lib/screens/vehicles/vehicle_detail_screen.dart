@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../widgets/license_plate_widget.dart';
-import '../../constants.dart';
+import 'package:ecom_modwir/widgets/license_plate_widget.dart';
+import 'package:ecom_modwir/constants.dart';
 
 class VehicleDetailScreen extends StatelessWidget {
   final Map<String, dynamic> vehicleData;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../services/websocket_service.dart';
+import 'package:ecom_modwir/services/websocket_service.dart';
 
 class RealtimeController extends GetxController {
   final WebSocketService _wsService = Get.find<WebSocketService>();

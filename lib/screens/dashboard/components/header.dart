@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import '../../../controllers/main_controller.dart';
-import '../../../responsive.dart';
-import '../../../constants.dart';
+import 'package:ecom_modwir/controllers/main_controller.dart';
+import 'package:ecom_modwir/responsive.dart';
+import 'package:ecom_modwir/constants.dart';
 
 class Header extends StatelessWidget {
   const Header({Key? key}) : super(key: key);

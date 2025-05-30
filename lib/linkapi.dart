@@ -1,50 +1,79 @@
 class AppLink {
+  // ============================ Server Link  Links ============================//
+
   static const String server = "https://modwir.com/haytham_store";
+  // static const String server = "http://192.168.167.187/haytham_store";
   static const String AdminLink = "$server/admin";
+
+// ============================ Images Links  Links ============================//
+  static const String unifonicLink =
+      "https://el.cloud.unifonic.com/rest/SMS/messages";
+
   static const String imageStatic = "$server/upload";
+  static const String imageCategories = "$imageStatic/categories";
+  static const String vehiclesImgLink = "$imageStatic/vehicles";
+  static const String offerImgLink = "$imageStatic/offers";
+  static const String carMakeLogo = "$imageStatic/cars";
 
-  // Dashboard
-  static const String dashboardStats =
-      "$AdminLink/dashboard.php?action=dashboard_stats";
+// ============================ Auth  Links ============================//
+  static const String authLink = "$AdminLink/auth";
 
-  // Users
-  static const String usersView = "$AdminLink/users/view.php";
-  static const String usersUpdateStatus = "$AdminLink/users/update_status.php";
+  static const String signUp = "$authLink/signup.php";
+  static const String verfiyCodeSignUp = "$authLink/verfiycode.php";
+  static const String resendverfiyCode = "$authLink/resend.php";
+  static const String login = "$authLink/login.php";
 
-  // Services
-  static const String serviceDisplay = "$server/services/services_display.php";
+  // ============================ Home  Links ============================//
+  static const String homeLink = AdminLink;
+  static const String homePage = "$homeLink/dashboard.php";
+
+  // ============================ Services  Links ============================//
+  static const String linkServices = "$server/services";
+  static const String searchitems = "$linkServices/search.php";
+  static const String serviceDisplay = "$linkServices/services_display.php";
   static const String subserviceDisplay =
-      "$server/services/sub_services_display.php";
+      "$linkServices/sub_services_display.php";
+  static const String faultType = "$linkServices/fault_type.php";
 
-  // Orders
-  static const String detailsOrders = "$AdminLink/orders/details.php";
-  static const String updateOrderStatus = "$AdminLink/orders/update_status.php";
+  // ============================ Cars  Links ============================//
+  static const String carsMakeLink = "$server/cars";
+  static const String carsMakeDisplay = "$carsMakeLink/view.php";
+  static const String updateVehicleWithLang =
+      "$carsMakeLink/updateWithLang.php";
+  static const String createVehicle = "$carsMakeLink/create.php";
 
-  // Vehicles
-  static const String vehicleView = "$server/vehicles/view.php";
-  static const String vehicleAdd = "$server/vehicles/add.php";
-  static const String vehicleRemove = "$server/vehicles/remove.php";
+  static const String updateVehicle = "$carsMakeLink/update.php";
+  static const String getVehicleEssentials = "$carsMakeLink/view.php";
+  // ============================ Vehicles  Links ============================//
+  static const String vehiclesLink = "$server/vehicles";
+  static const String vehicleAdd = "$vehiclesLink/add.php";
+  static const String vehicleUpdate = "$vehiclesLink/update.php";
+  static const String vehicleRemove = "$vehiclesLink/remove.php";
+  static const String vehicleView = "$vehiclesLink/view.php";
+  static const String deleteFromVe = "$vehiclesLink/delete_from_vehicles.php";
 
-  // Cars
-  static const String carsMakeDisplay = "$server/cars/view.php";
-  static const String carsModelsDisplay = "$server/cars/models.php";
+  // ============================ Product By Car Links ============================//
+  static const String productByCar = "$carsMakeLink/product_by_car.php";
 
-  // Notifications
-  static const String notificationView = "$AdminLink/notifications/view.php";
-  static const String markNotiRead = "$AdminLink/notifications/mark_read.php";
-  static const String markAllNotiRead =
-      "$AdminLink/notifications/mark_all_read.php";
-  static const String sendNotification =
-      "$AdminLink/notifications/notification.php";
+  // ============================ Coupon  Links ============================//
+  static const String checkCoupon = "$server/coupon/checkcoupon.php";
 
-  // Payments
-  static const String paymentsView = "$AdminLink/payments/view.php";
-  static const String paymentsStats = "$AdminLink/payments/stats.php";
+  // ============================ Orders  Links ============================//
+  static const String ordersLink = "$AdminLink/orders";
+  static const String pendingOrders = "$ordersLink/pending.php";
+  static const String archiveOrders = "$ordersLink/archive.php";
+  static const String detailsOrders = "$ordersLink/details.php";
+  static const String orderDetailsView = "$ordersLink/details.php";
+  static const String deleteOrder = "$ordersLink/delete.php";
+  static const String cancelOrder = "$ordersLink/cancel.php";
+  static const String attachmentsUpload =
+      "$ordersLink/save_attachment_files.php";
 
-  // Settings
-  static const String settingsView = "$AdminLink/settings/view.php";
-  static const String settingsUpdate = "$AdminLink/settings/update.php";
+  // ============================ Notification  Links ============================//
+  static const String notificationLink = "$AdminLink/notifications";
+  static const String notificatoin = "$notificationLink/notification.php";
+  static const String markNotiRead = "$notificationLink/mark_read.php";
+  static const String markAllNotiRead = "$notificationLink/mark_all_read.php";
 
-  // Export
-  static const String exportData = "$AdminLink/export.php";
+  static const String processPayment = "$AdminLink/payments";
 }

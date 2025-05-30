@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import '../models/service_model.dart';
-import '../services/api_service.dart';
+import 'package:ecom_modwir/models/service_model.dart';
+import 'package:ecom_modwir/services/api_service.dart';
 
 class ServicesController extends GetxController {
   var isLoading = false.obs;

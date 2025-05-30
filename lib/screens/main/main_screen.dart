@@ -3,21 +3,21 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../../controllers/main_controller.dart';
+import 'package:ecom_modwir/controllers/main_controller.dart';
 
-import '../../responsive.dart';
+import 'package:ecom_modwir/responsive.dart';
 
-import '../dashboard/dashboard_screen.dart';
+import 'package:ecom_modwir/screens/dashboard/dashboard_screen.dart';
 
-import '../customers/customers_screen.dart';
+import 'package:ecom_modwir/screens/customers/customers_screen.dart';
 
-import '../services/services_screen.dart';
+import 'package:ecom_modwir/screens/services/services_screen.dart';
 
-import '../sub_services/sub_services_screen.dart';
+import 'package:ecom_modwir/screens/sub_services/sub_services_screen.dart';
 
-import '../orders/orders_screen.dart';
+import 'package:ecom_modwir/screens/orders/orders_screen.dart';
 
-import '../payments/payments_screen.dart';
+import 'package:ecom_modwir/screens/payments/payments_screen.dart';
 
 import 'components/side_menu.dart';
 

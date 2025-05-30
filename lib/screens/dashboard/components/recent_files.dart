@@ -3,7 +3,7 @@ import 'package:ecom_modwir/models/recent_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../constants.dart';
+import 'package:ecom_modwir/constants.dart';
 
 class RecentFiles extends StatelessWidget {
   const RecentFiles({

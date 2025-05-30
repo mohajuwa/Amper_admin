@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import '../models/dashboard_stats.dart';
-import '../services/api_service.dart';
+import 'package:ecom_modwir/models/dashboard_stats.dart';
+import 'package:ecom_modwir/services/api_service.dart';
 
 class DashboardController extends GetxController {
   var isLoading = false.obs;

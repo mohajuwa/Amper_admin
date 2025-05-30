@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../responsive.dart';
+import 'package:ecom_modwir/responsive.dart';
 
 class ResponsiveWrapper extends StatelessWidget {
   final Widget child;

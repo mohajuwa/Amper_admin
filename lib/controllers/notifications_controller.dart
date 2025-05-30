@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 
-import '../models/notification_model.dart';
+import 'package:ecom_modwir/models/notification_model.dart';
 
-import '../services/api_service.dart';
+import 'package:ecom_modwir/services/api_service.dart';
 
 class NotificationsController extends GetxController {
   var isLoading = false.obs;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../../../constants.dart';
+import 'package:ecom_modwir/constants.dart';
 
 class RecentOrdersTable extends StatelessWidget {
   const RecentOrdersTable({Key? key}) : super(key: key);

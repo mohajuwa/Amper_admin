@@ -1,10 +1,10 @@
 // lib/screens/customers/customers_screen.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../controllers/users_controller.dart';
-import '../../constants.dart';
-import '../../responsive.dart';
-import '../dashboard/components/header.dart';
+import 'package:ecom_modwir/controllers/users_controller.dart';
+import 'package:ecom_modwir/constants.dart';
+import 'package:ecom_modwir/responsive.dart';
+import 'package:ecom_modwir/screens/dashboard/components/header.dart';
 
 class CustomersScreen extends StatelessWidget {
   @override

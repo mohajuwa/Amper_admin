@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import '../models/payment_model.dart';
-import '../services/api_service.dart';
+import 'package:ecom_modwir/models/payment_model.dart';
+import 'package:ecom_modwir/services/api_service.dart';
 
 class PaymentsController extends GetxController {
   var isLoading = false.obs;

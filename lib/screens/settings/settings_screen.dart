@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../../controllers/settings_controller.dart';
+import 'package:ecom_modwir/controllers/settings_controller.dart';
 
-import '../../controllers/theme_controller.dart';
+import 'package:ecom_modwir/controllers/theme_controller.dart';
 
-import '../../controllers/language_controller.dart';
+import 'package:ecom_modwir/controllers/language_controller.dart';
 
-import '../../constants.dart';
+import 'package:ecom_modwir/constants.dart';
 
-import '../dashboard/components/header.dart';
+import 'package:ecom_modwir/screens/dashboard/components/header.dart';
 
 class SettingsScreen extends StatelessWidget {
   @override

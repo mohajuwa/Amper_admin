@@ -2,7 +2,7 @@ import 'package:ecom_modwir/models/my_files.dart';
 import 'package:ecom_modwir/responsive.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import 'package:ecom_modwir/constants.dart';
 import 'file_info_card.dart';
 
 class MyFiles extends StatelessWidget {

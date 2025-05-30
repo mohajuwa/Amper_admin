@@ -4,15 +4,15 @@ import 'package:get/get.dart';
 
 import 'package:fl_chart/fl_chart.dart';
 
-import '../../controllers/payments_controller.dart';
+import 'package:ecom_modwir/controllers/payments_controller.dart';
 
-import '../../constants.dart';
+import 'package:ecom_modwir/constants.dart';
 
-import '../../responsive.dart';
+import 'package:ecom_modwir/responsive.dart';
 
-import '../dashboard/components/header.dart';
+import 'package:ecom_modwir/screens/dashboard/components/header.dart';
 
-import '../../utils/app_utils.dart';
+import 'package:ecom_modwir/utils/app_utils.dart';
 
 class EnhancedPaymentsScreen extends StatelessWidget {
   @override

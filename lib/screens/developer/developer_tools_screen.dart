@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../controllers/developer_tools_controller.dart';
-import '../../constants.dart';
-import '../dashboard/components/header.dart';
+import 'package:ecom_modwir/controllers/developer_tools_controller.dart';
+import 'package:ecom_modwir/constants.dart';
+import 'package:ecom_modwir/screens/dashboard/components/header.dart';
 
 class DeveloperToolsScreen extends StatelessWidget {
   @override

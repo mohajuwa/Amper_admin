@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 
 import 'package:fl_chart/fl_chart.dart';
 
-import '../../controllers/reports_controller.dart';
+import 'package:ecom_modwir/controllers/reports_controller.dart';
 
-import '../../constants.dart';
+import 'package:ecom_modwir/constants.dart';
 
-import '../dashboard/components/header.dart';
+import 'package:ecom_modwir/screens/dashboard/components/header.dart';
 
 class ReportsScreen extends StatelessWidget {
   @override

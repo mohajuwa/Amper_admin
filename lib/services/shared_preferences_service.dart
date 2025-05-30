@@ -1,3 +1,6 @@
+// lib/services/shared_preferences_service.dart
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -26,10 +29,16 @@ class SharedPreferencesService extends GetxService {
     await _prefs.setString('language', languageCode);
   }
 
-  // Authentication
+  // Authentication - Fixed method names
   String? get authToken => _prefs.getString('auth_token');
+  String? getToken() => _prefs.getString('auth_token'); // Added this method
 
   Future<void> setAuthToken(String token) async {
+    await _prefs.setString('auth_token', token);
+  }
+
+  Future<void> saveToken(String token) async {
+    // Added this method
     await _prefs.setString('auth_token', token);
   }
 
@@ -46,6 +55,30 @@ class SharedPreferencesService extends GetxService {
 
   Future<void> removeUserData() async {
     await _prefs.remove('user_data');
+  }
+
+  Map<String, dynamic>? getUserData() {
+    // Added this method
+    final userData = _prefs.getString('user_data');
+    if (userData != null) {
+      try {
+        return json.decode(userData);
+      } catch (e) {
+        return null;
+      }
+    }
+    return null;
+  }
+
+  Future<void> saveUserData(Map<String, dynamic> data) async {
+    // Added this method
+    await _prefs.setString('user_data', json.encode(data));
+  }
+
+  // Clear Authentication Data - Fixed method
+  Future<void> clearAuthData() async {
+    await removeAuthToken();
+    await removeUserData();
   }
 
   // Generic String Storage
@@ -198,12 +231,5 @@ class SharedPreferencesService extends GetxService {
 
   bool isFavorite(String type, String itemId) {
     return getFavorites(type).contains(itemId);
-  }
-
-  // Clear Authentication Data
-  Future<void> clearAuthData() async {
-    await removeAuthToken();
-    await removeUserData();
-    // Add any other auth-related keys to remove here
   }
 }
